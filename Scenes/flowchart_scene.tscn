@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://cb2r105nqmjnr"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_yinng"]
+
+[node name="flowchart_scene" type="Node3D"]
+
+[node name="FlowchartPlane" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00216722, 0, -0.0163759)
+mesh = SubResource("PlaneMesh_yinng")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.417867, 0.908508, 0, -0.908508, 0.417867, 0, 2.272, 0.986593)
+fov = 27.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.965926, -3.09086e-08, -0.258819, 0.183013, 0.707107, 0.683013, 0.183013, -0.707107, 0.683013, -3.11844, 4.31145, 3.83666)
+light_energy = 1.914
