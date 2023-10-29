@@ -1,0 +1,116 @@
+[gd_scene load_steps=11 format=3 uid="uid://boho63v1si68t"]
+
+[ext_resource type="Script" path="res://src/container/container.gd" id="1_ooxu8"]
+[ext_resource type="Script" path="res://src/container/GrabPoint.gd" id="2_bf3xi"]
+[ext_resource type="Script" path="res://src/container/ResizePoint.gd" id="3_3hiy7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f3p0b"]
+albedo_color = Color(0.270588, 0.462745, 0.705882, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0xfu6"]
+size = Vector3(0.208945, 0.293828, 0.195364)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a5pgj"]
+size = Vector3(0.0370743, 0.276866, 0.204643)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kopxs"]
+size = Vector3(0.0370743, 0.271373, 0.204643)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1dl05"]
+size = Vector3(0.212381, 0.281863, 0.0298232)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dngh1"]
+size = Vector3(0.212381, 0.277468, 0.0298232)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_edm1x"]
+size = Vector3(0.0370743, 0.261653, 0.0335321)
+
+[node name="CSGBox3D" type="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.136735, 0)
+size = Vector3(0.253927, 0.272699, 0.239428)
+material = SubResource("StandardMaterial3D_f3p0b")
+script = ExtResource("1_ooxu8")
+
+[node name="GrabPoint" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00637102, 0.00248063, -0.000931025)
+script = ExtResource("2_bf3xi")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GrabPoint"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00106658, 0.00055711, 0.000236511)
+shape = SubResource("BoxShape3D_0xfu6")
+
+[node name="LeftResize" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.118451, 0, 0.0029639)
+script = ExtResource("3_3hiy7")
+x = -1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LeftResize"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00138961, 0)
+shape = SubResource("BoxShape3D_a5pgj")
+
+[node name="RightResize" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0994475, 0.000268817, -0.000199556)
+script = ExtResource("3_3hiy7")
+x = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RightResize"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00138961, 0)
+shape = SubResource("BoxShape3D_kopxs")
+
+[node name="UpResize" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00577813, 0.00109851, -0.120774)
+script = ExtResource("3_3hiy7")
+z = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="UpResize"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00138961, 0)
+shape = SubResource("BoxShape3D_1dl05")
+
+[node name="DownResize" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00021857, 0, 0.12131)
+script = ExtResource("3_3hiy7")
+z = -1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DownResize"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00138961, 0)
+shape = SubResource("BoxShape3D_dngh1")
+
+[node name="UpLeftResize" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.123418, 0.00517057, -0.115158)
+script = ExtResource("3_3hiy7")
+x = -1
+z = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="UpLeftResize"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00138961, 0)
+shape = SubResource("BoxShape3D_edm1x")
+
+[node name="UpRightResize" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0216955, 0.0100384, -0.0799039)
+script = ExtResource("3_3hiy7")
+x = 1
+z = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="UpRightResize"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00138961, 0)
+shape = SubResource("BoxShape3D_edm1x")
+
+[node name="DownRightResize" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.105544, 0.00568049, 0.122343)
+script = ExtResource("3_3hiy7")
+x = 1
+z = -1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DownRightResize"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00138961, 0)
+shape = SubResource("BoxShape3D_edm1x")
+
+[node name="DownLeftResize" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.161447, 0.00725649, 0.126362)
+script = ExtResource("3_3hiy7")
+x = -1
+z = -1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DownLeftResize"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00138961, 0)
+shape = SubResource("BoxShape3D_edm1x")
