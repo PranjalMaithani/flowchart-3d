@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cb2r105nqmjnr"]
+[gd_scene load_steps=7 format=3 uid="uid://cb2r105nqmjnr"]
 
-[ext_resource type="PackedScene" uid="uid://boho63v1si68t" path="res://Components/container.tscn" id="1_u0lgk"]
+[ext_resource type="PackedScene" uid="uid://pwytv1htyylm" path="res://Components/ContainerBox.tscn" id="1_nv32g"]
+[ext_resource type="PackedScene" uid="uid://b338qhshxv8rp" path="res://Components/GameManager.tscn" id="2_6gx0o"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_p60a6"]
 sky_top_color = Color(0.411765, 0.482353, 0.584314, 1)
@@ -22,7 +23,7 @@ sky = SubResource("Sky_f35ay")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ldxxl")
 
-[node name="FlowchartPlane" type="MeshInstance3D" parent="."]
+[node name="Floor" type="MeshInstance3D" parent="."]
 transform = Transform3D(1.58357, 0, 0, 0, 1, 0, 0, 0, 1, -0.00216722, 0, -0.0163759)
 mesh = SubResource("PlaneMesh_yinng")
 
@@ -34,4 +35,8 @@ fov = 27.0
 transform = Transform3D(0.616481, 0.458638, -0.640003, 0.183013, 0.707107, 0.683013, 0.765805, -0.538193, 0.351981, -3.11844, 4.31145, 3.83666)
 light_energy = 1.914
 
-[node name="ContainerTest" parent="." instance=ExtResource("1_u0lgk")]
+[node name="ContainerBox" parent="." instance=ExtResource("1_nv32g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.24609, 0.138507, -0.117524)
+
+[node name="GameManager" parent="." node_paths=PackedStringArray("ground_plane") instance=ExtResource("2_6gx0o")]
+ground_plane = NodePath("../Floor")
