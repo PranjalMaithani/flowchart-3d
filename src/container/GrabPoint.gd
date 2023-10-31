@@ -6,6 +6,7 @@ var camera
 
 func _ready():
     container = get_parent_node_3d()
+    #TODO: remove dependency from flowchart_scene node
     var app_manager = get_node("/root/flowchart_scene/AppManager") as AppManager
     camera = app_manager.camera
 
