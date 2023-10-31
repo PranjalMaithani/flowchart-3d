@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://src/container/ResizePoint.gd" id="2_x382d"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hsdtn"]
-albedo_color = Color(0.803922, 0.470588, 0.458824, 1)
+albedo_color = Color(0.623529, 0.352941, 0.360784, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0xfu6"]
 size = Vector3(0.208945, 0.293828, 0.195364)
@@ -26,11 +26,10 @@ size = Vector3(0.0370743, 0.261653, 0.0335321)
 
 [node name="ContainerBox" type="Node3D"]
 
-[node name="BoxMesh" type="CSGBox3D" parent="."]
+[node name="ContainerMesh" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00637102, 0.00248063, -0.000931025)
 size = Vector3(0.256057, 0.273427, 0.257805)
 material = SubResource("StandardMaterial3D_hsdtn")
-metadata/_edit_lock_ = true
 
 [node name="GrabPoint" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00637102, 0.00248063, -0.000931025)

@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://cb2r105nqmjnr"]
+[gd_scene load_steps=9 format=3 uid="uid://cb2r105nqmjnr"]
 
+[ext_resource type="Material" uid="uid://c57ycd54txcqv" path="res://Materials/floor_dark.tres" id="1_jwrac"]
 [ext_resource type="PackedScene" uid="uid://pwytv1htyylm" path="res://Components/ContainerBox.tscn" id="1_nv32g"]
 [ext_resource type="PackedScene" uid="uid://b338qhshxv8rp" path="res://Components/GameManager.tscn" id="2_6gx0o"]
 
@@ -17,6 +18,10 @@ background_mode = 2
 sky = SubResource("Sky_f35ay")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_yinng"]
+material = ExtResource("1_jwrac")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_beqyu"]
+size = Vector3(1.96551, 0.00944167, 1.97355)
 
 [node name="flowchart_scene" type="Node3D"]
 
@@ -27,16 +32,29 @@ environment = SubResource("Environment_ldxxl")
 transform = Transform3D(1.58357, 0, 0, 0, 1, 0, 0, 0, 1, -0.00216722, 0, -0.0163759)
 mesh = SubResource("PlaneMesh_yinng")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00306225, 0)
+shape = SubResource("BoxShape3D_beqyu")
+
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.532699, 0.846305, 0, -0.846305, 0.532699, 0, 2.92865, 1.98016)
 fov = 27.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.616481, 0.458638, -0.640003, 0.183013, 0.707107, 0.683013, 0.765805, -0.538193, 0.351981, -3.11844, 4.31145, 3.83666)
-light_energy = 1.914
+light_energy = 1.254
 
 [node name="ContainerBox" parent="." instance=ExtResource("1_nv32g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.24609, 0.138507, -0.117524)
 
-[node name="GameManager" parent="." node_paths=PackedStringArray("ground_plane") instance=ExtResource("2_6gx0o")]
+[node name="AppManager" parent="." node_paths=PackedStringArray("ground_plane", "camera") instance=ExtResource("2_6gx0o")]
 ground_plane = NodePath("../Floor")
+camera = NodePath("../Camera3D")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(0.999256, -0.00848124, -0.0376174, 0.0369439, -0.0690301, 0.99693, -0.0110519, -0.997579, -0.0686655, -0.0175178, 1.09849, -0.131702)
+light_energy = 1.495
+spot_range = 2.40393
+spot_angle = 50.625
