@@ -1,9 +1,14 @@
-[gd_scene load_steps=12 format=3 uid="uid://pwytv1htyylm"]
+[gd_scene load_steps=15 format=3 uid="uid://pwytv1htyylm"]
 
+[ext_resource type="Script" path="res://src/container/container_box.gd" id="1_4n22i"]
 [ext_resource type="Script" path="res://src/container/GrabPoint.gd" id="1_krqly"]
 [ext_resource type="Script" path="res://src/container/ResizePoint.gd" id="2_x382d"]
 [ext_resource type="Material" uid="uid://b4k4y5oskkgcg" path="res://Materials/container_default.tres" id="3_x2j8v"]
 [ext_resource type="ArrayMesh" uid="uid://c4g2r8grndjii" path="res://Models/cap.obj" id="4_6wwgc"]
+[ext_resource type="PackedScene" uid="uid://dn37yfsub6u2l" path="res://Components/TextContainer.tscn" id="5_iufej"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_a8dj0"]
+viewport_path = NodePath("SubViewport")
 
 [sub_resource type="BoxMesh" id="BoxMesh_v2erc"]
 lightmap_size_hint = Vector2i(6, 10)
@@ -28,12 +33,23 @@ size = Vector3(1.61616, 0.946088, 0.165877)
 size = Vector3(0.258359, 0.954196, 0.236842)
 
 [node name="ContainerBox" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00615692, 4.76837e-07, 0.00887489)
+script = ExtResource("1_4n22i")
+
+[node name="TextContainer" parent="." instance=ExtResource("5_iufej")]
+transform = Transform3D(1.97316, 0, 0, 0, 1.96679, 0, 0, 0, 1, 0, 1.07174, 0)
+texture = SubResource("ViewportTexture_a8dj0")
 
 [node name="ContainerMesh" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000441551, 0.487234, -0.00488234)
 material_override = ExtResource("3_x2j8v")
 mesh = SubResource("BoxMesh_v2erc")
+
+[node name="Cap" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(0.028, 0, 0, 0, 0.028, 0, 0, 0, 0.028, 0.0026232, 0.00749826, 0.0013071)
+mesh = ExtResource("4_6wwgc")
 
 [node name="GrabPoint" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00637102, 0.00248063, -0.000931025)
@@ -119,7 +135,3 @@ z = -1
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DownRightResize"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00560999, 0.472912, -0.00586492)
 shape = SubResource("BoxShape3D_edm1x")
-
-[node name="Cap" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.028, 0, 0, 0, 0.028, 0, 0, 0, 0.028, -0.00866878, 0, -0.000647932)
-mesh = ExtResource("4_6wwgc")

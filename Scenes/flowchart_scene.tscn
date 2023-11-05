@@ -40,15 +40,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00306225, 0)
 shape = SubResource("BoxShape3D_beqyu")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.532699, 0.846305, 0, -0.846305, 0.532699, 0, 22.9286, 13.9802)
-fov = 27.0
+transform = Transform3D(1, 0, 0, 0, 0.532699, 0.846305, 0, -0.846305, 0.532699, 0, 73.9286, 47.9802)
+fov = 12.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.616481, 0.458638, -0.640003, 0.183013, 0.707107, 0.683013, 0.765805, -0.538193, 0.351981, -3.11844, 4.31145, 3.83666)
 light_energy = 1.254
 
 [node name="ContainerBox" parent="." instance=ExtResource("1_nv32g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.24609, 0.138507, -0.117524)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="AppManager" parent="." node_paths=PackedStringArray("ground_plane", "camera") instance=ExtResource("2_6gx0o")]
 ground_plane = NodePath("../Floor")
