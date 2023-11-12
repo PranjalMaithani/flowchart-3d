@@ -30,10 +30,12 @@ size = Vector3(100, 0.00944167, 100)
 environment = SubResource("Environment_ldxxl")
 
 [node name="Floor" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.58357, 0, 0, 0, 1, 0, 0, 0, 1, -0.00216675, 0, 9.98363)
+transform = Transform3D(1.58357, 0, 0, 0, 1, 0, 0, 0, 1, 6.11342, 0, 14.7283)
 mesh = SubResource("PlaneMesh_yinng")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Floor"]
+collision_layer = 2
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00306225, 0)
@@ -48,7 +50,6 @@ transform = Transform3D(0.616481, 0.458638, -0.640003, 0.183013, 0.707107, 0.683
 light_energy = 1.254
 
 [node name="ContainerBox" parent="." instance=ExtResource("1_nv32g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="AppManager" parent="." node_paths=PackedStringArray("ground_plane", "camera") instance=ExtResource("2_6gx0o")]
 ground_plane = NodePath("../Floor")
@@ -59,3 +60,6 @@ transform = Transform3D(0.999256, -0.00848121, -0.0376174, 0.0369439, -0.0690301
 light_energy = 1.495
 spot_range = 15.0
 spot_angle = 32.3512
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.62388, 1.04806, -4.57963)

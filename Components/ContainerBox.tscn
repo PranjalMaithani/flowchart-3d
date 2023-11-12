@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://pwytv1htyylm"]
+[gd_scene load_steps=16 format=3 uid="uid://pwytv1htyylm"]
 
 [ext_resource type="Script" path="res://src/container/container_box.gd" id="1_4n22i"]
 [ext_resource type="Script" path="res://src/container/GrabPoint.gd" id="1_krqly"]
@@ -7,12 +7,12 @@
 [ext_resource type="ArrayMesh" uid="uid://c4g2r8grndjii" path="res://Models/cap.obj" id="4_6wwgc"]
 [ext_resource type="PackedScene" uid="uid://dn37yfsub6u2l" path="res://Components/TextContainer.tscn" id="5_iufej"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_a8dj0"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_4et1q"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="BoxMesh" id="BoxMesh_v2erc"]
 lightmap_size_hint = Vector2i(6, 10)
-size = Vector3(2, 1, 2)
+size = Vector3(3, 1, 2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0xfu6"]
 size = Vector3(1.59811, 0.969367, 1.71745)
@@ -24,25 +24,26 @@ size = Vector3(0.202562, 0.980643, 1.71255)
 size = Vector3(0.202942, 0.949978, 1.70898)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1dl05"]
-size = Vector3(1.61394, 0.907756, 0.16383)
+size = Vector3(2.52566, 0.907756, 0.16383)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dngh1"]
-size = Vector3(1.61616, 0.946088, 0.165877)
+size = Vector3(2.49468, 0.946088, 0.165877)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_edm1x"]
 size = Vector3(0.258359, 0.954196, 0.236842)
 
+[sub_resource type="CylinderMesh" id="CylinderMesh_dfu62"]
+
 [node name="ContainerBox" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00615692, 4.76837e-07, 0.00887489)
 script = ExtResource("1_4n22i")
 
 [node name="TextContainer" parent="." instance=ExtResource("5_iufej")]
 transform = Transform3D(1.97316, 0, 0, 0, 1.96679, 0, 0, 0, 1, 0, 1.07174, 0)
-texture = SubResource("ViewportTexture_a8dj0")
+texture = SubResource("ViewportTexture_4et1q")
 
 [node name="ContainerMesh" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000441551, 0.487234, -0.00488234)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.487, -0.0221472)
 material_override = ExtResource("3_x2j8v")
 mesh = SubResource("BoxMesh_v2erc")
 
@@ -66,7 +67,7 @@ script = ExtResource("2_x382d")
 x = -1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LeftResize"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00718856, 0.492596, -0.00511438)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.505478, 0.492596, -0.00511438)
 shape = SubResource("BoxShape3D_a5pgj")
 
 [node name="RightResize" type="Area3D" parent="."]
@@ -75,7 +76,7 @@ script = ExtResource("2_x382d")
 x = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RightResize"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0102311, 0.480432, -0.00828975)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.483449, 0.480432, -0.00828975)
 shape = SubResource("BoxShape3D_kopxs")
 
 [node name="UpResize" type="Area3D" parent="."]
@@ -97,41 +98,48 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.489453, -0.0128077)
 shape = SubResource("BoxShape3D_dngh1")
 
 [node name="UpLeftResize" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.84298, 0.00517057, -0.886555)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4085, 0.00517057, -0.886555)
 script = ExtResource("2_x382d")
 x = -1
 z = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="UpLeftResize"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0237929, 0.489864, 0.00592208)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0254272, 0.489864, 0.00592208)
 shape = SubResource("BoxShape3D_edm1x")
 
 [node name="UpRightResize" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.860327, 0.0100384, -0.896537)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.41454, 0.0100384, -0.896537)
 script = ExtResource("2_x382d")
 x = 1
-z = 1
+z = -1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="UpRightResize"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0144372, 0.477506, 0.0130836)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0479101, 0.477506, 0.0130836)
 shape = SubResource("BoxShape3D_edm1x")
 
 [node name="DownLeftResize" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.870793, 0.00725649, 0.912746)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.40238, 0.00725649, 0.912746)
 script = ExtResource("2_x382d")
 x = -1
 z = -1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DownLeftResize"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00321722, 0.500453, -0.0165017)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0194743, 0.500453, -0.0165017)
 shape = SubResource("BoxShape3D_edm1x")
 
 [node name="DownRightResize" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.87384, 0.00568049, 0.901897)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.37815, 0.00568049, 0.901897)
 script = ExtResource("2_x382d")
 x = 1
-z = -1
+z = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DownRightResize"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00560999, 0.472912, -0.00586492)
 shape = SubResource("BoxShape3D_edm1x")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="DownRightResize"]
+transform = Transform3D(-0.241067, 0, 0, 0, 1, 0, 0, 0, -0.241067, 0, 0.123863, 0)
+mesh = SubResource("CylinderMesh_dfu62")
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.52203, 0.844432, -1.00693)
