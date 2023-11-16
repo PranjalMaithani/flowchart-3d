@@ -17,7 +17,7 @@ func handle_mouse_enter():
 func handle_mouse_exit():
     Input.set_default_cursor_shape(Input.CURSOR_ARROW)
 
-func handle_mouse_event(_camera:Node, event:InputEvent, event_position:Vector3, _normal:Vector3, _shape_idx:int):
+func handle_mouse_event(_camera:Node, event:InputEvent, _event_position:Vector3, _normal:Vector3, _shape_idx:int):
     if(!UIHelpers.is_left_mouse_click(event)):
         return
 

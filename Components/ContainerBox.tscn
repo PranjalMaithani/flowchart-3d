@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://pwytv1htyylm"]
+[gd_scene load_steps=13 format=3 uid="uid://pwytv1htyylm"]
 
 [ext_resource type="Script" path="res://src/container/container_box.gd" id="1_4n22i"]
 [ext_resource type="Material" uid="uid://b4k4y5oskkgcg" path="res://Materials/container_default.tres" id="3_x2j8v"]
@@ -12,14 +12,16 @@ lightmap_size_hint = Vector2i(6, 10)
 size = Vector3(3, 1, 2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0xfu6"]
-size = Vector3(1.59811, 0.969367, 1.71745)
+size = Vector3(2.41903, 0.969367, 1.52867)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0npq6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_edm1x"]
 size = Vector3(0.258359, 0.954196, 0.236842)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_dfu62"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_vcmyu"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_rb834"]
 viewport_path = NodePath("SubViewport")
 
 [node name="ContainerBox" type="Node3D"]
@@ -42,8 +44,12 @@ input_capture_on_drag = true
 script = ExtResource("5_xoi88")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GrabPoint"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00336669, 0.488947, -0.00419688)
+transform = Transform3D(1.00033, 0, 0, 0, 1.00033, 0, 0, 0, 1.00033, -0.00336669, 0.488947, -0.00419688)
 shape = SubResource("BoxShape3D_0xfu6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="GrabPoint"]
+transform = Transform3D(2.37726, 0, 0, 0, 1, 0, 0, 0, 1.52323, 0, 0.587915, 0)
+mesh = SubResource("BoxMesh_0npq6")
 
 [node name="UpLeftResize" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4085, 0.00517057, -0.886555)
@@ -109,4 +115,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.52203, 0.844432, -1.00693)
 
 [node name="TextContainer" parent="." instance=ExtResource("5_iufej")]
 transform = Transform3D(1.97316, 0, 0, 0, 1.96679, 0, 0, 0, 1, 0, 1.07174, 0)
-texture = SubResource("ViewportTexture_vcmyu")
+visible = false
+texture = SubResource("ViewportTexture_rb834")

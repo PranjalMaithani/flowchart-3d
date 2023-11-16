@@ -41,7 +41,6 @@ func _ready():
     x_scale_unit = container_mesh.scale.x / (aabb_down_right.x - aabb_up_left.x)
     z_scale_unit = container_mesh.scale.z / (aabb_down_right.z - aabb_up_left.z)
     set_intial_values()
-    parent_container.on_container_changed.connect(set_intial_values)
     parent_container.on_container_changed.connect(update_position)
 
 func set_intial_values():
