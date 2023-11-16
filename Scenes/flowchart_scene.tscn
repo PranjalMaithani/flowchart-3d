@@ -42,11 +42,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00306225, 0)
 shape = SubResource("BoxShape3D_beqyu")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.532699, 0.846305, 0, -0.846305, 0.532699, 0, 73.9286, 47.9802)
-fov = 12.0
+transform = Transform3D(0.918446, 0.303449, -0.253723, 0, 0.64145, 0.767165, 0.395546, -0.7046, 0.589137, -6.94971, 17.2574, 17.5765)
+projection = 1
+current = true
+fov = 5.9
+size = 15.0
+near = 0.003
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.616481, 0.458638, -0.640003, 0.183013, 0.707107, 0.683013, 0.765805, -0.538193, 0.351981, -3.11844, 4.31145, 3.83666)
+transform = Transform3D(0.614835, 0.46181, -0.639304, 0.181361, 0.706107, 0.684486, 0.767519, -0.536791, 0.350385, -3.11844, 4.31145, 3.83666)
 light_energy = 1.254
 
 [node name="ContainerBox" parent="." instance=ExtResource("1_nv32g")]

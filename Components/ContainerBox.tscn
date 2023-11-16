@@ -1,14 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://pwytv1htyylm"]
+[gd_scene load_steps=12 format=3 uid="uid://pwytv1htyylm"]
 
 [ext_resource type="Script" path="res://src/container/container_box.gd" id="1_4n22i"]
-[ext_resource type="Script" path="res://src/container/GrabPoint.gd" id="1_krqly"]
-[ext_resource type="Script" path="res://src/container/ResizePoint.gd" id="2_x382d"]
 [ext_resource type="Material" uid="uid://b4k4y5oskkgcg" path="res://Materials/container_default.tres" id="3_x2j8v"]
 [ext_resource type="ArrayMesh" uid="uid://c4g2r8grndjii" path="res://Models/cap.obj" id="4_6wwgc"]
 [ext_resource type="PackedScene" uid="uid://dn37yfsub6u2l" path="res://Components/TextContainer.tscn" id="5_iufej"]
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_4et1q"]
-viewport_path = NodePath("SubViewport")
+[ext_resource type="Script" path="res://src/container/grab_point.gd" id="5_xoi88"]
+[ext_resource type="Script" path="res://src/container/resize_point.gd" id="6_6wen5"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_v2erc"]
 lightmap_size_hint = Vector2i(6, 10)
@@ -17,29 +14,16 @@ size = Vector3(3, 1, 2)
 [sub_resource type="BoxShape3D" id="BoxShape3D_0xfu6"]
 size = Vector3(1.59811, 0.969367, 1.71745)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_a5pgj"]
-size = Vector3(0.202562, 0.980643, 1.71255)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_kopxs"]
-size = Vector3(0.202942, 0.949978, 1.70898)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_1dl05"]
-size = Vector3(2.52566, 0.907756, 0.16383)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_dngh1"]
-size = Vector3(2.49468, 0.946088, 0.165877)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_edm1x"]
 size = Vector3(0.258359, 0.954196, 0.236842)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_dfu62"]
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_vcmyu"]
+viewport_path = NodePath("SubViewport")
+
 [node name="ContainerBox" type="Node3D"]
 script = ExtResource("1_4n22i")
-
-[node name="TextContainer" parent="." instance=ExtResource("5_iufej")]
-transform = Transform3D(1.97316, 0, 0, 0, 1.96679, 0, 0, 0, 1, 0, 1.07174, 0)
-texture = SubResource("ViewportTexture_4et1q")
 
 [node name="ContainerMesh" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true
@@ -55,61 +39,30 @@ mesh = ExtResource("4_6wwgc")
 [node name="GrabPoint" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00637102, 0.00248063, -0.000931025)
 input_capture_on_drag = true
-script = ExtResource("1_krqly")
+script = ExtResource("5_xoi88")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GrabPoint"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00336669, 0.488947, -0.00419688)
 shape = SubResource("BoxShape3D_0xfu6")
 
-[node name="LeftResize" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.906805, 0, 0.0029639)
-script = ExtResource("2_x382d")
-x = -1
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="LeftResize"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.505478, 0.492596, -0.00511438)
-shape = SubResource("BoxShape3D_a5pgj")
-
-[node name="RightResize" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.904393, 0.000268817, -0.000199556)
-script = ExtResource("2_x382d")
-x = 1
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RightResize"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.483449, 0.480432, -0.00828975)
-shape = SubResource("BoxShape3D_kopxs")
-
-[node name="UpResize" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00577813, 0.00109851, -0.945215)
-script = ExtResource("2_x382d")
-z = 1
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="UpResize"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.507521, 0.0305427)
-shape = SubResource("BoxShape3D_1dl05")
-
-[node name="DownResize" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00021857, 0, 0.947038)
-script = ExtResource("2_x382d")
-z = -1
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DownResize"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.489453, -0.0128077)
-shape = SubResource("BoxShape3D_dngh1")
-
 [node name="UpLeftResize" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4085, 0.00517057, -0.886555)
-script = ExtResource("2_x382d")
+script = ExtResource("6_6wen5")
 x = -1
-z = 1
+z = -1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="UpLeftResize"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0254272, 0.489864, 0.00592208)
 shape = SubResource("BoxShape3D_edm1x")
 
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="UpLeftResize"]
+transform = Transform3D(-0.241067, 0, 0, 0, 1, 0, 0, 0, -0.241067, -0.00395656, 0.124373, -0.0203711)
+mesh = SubResource("CylinderMesh_dfu62")
+skeleton = NodePath("../../DownRightResize")
+
 [node name="UpRightResize" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.41454, 0.0100384, -0.896537)
-script = ExtResource("2_x382d")
+script = ExtResource("6_6wen5")
 x = 1
 z = -1
 
@@ -117,19 +70,29 @@ z = -1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0479101, 0.477506, 0.0130836)
 shape = SubResource("BoxShape3D_edm1x")
 
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="UpRightResize"]
+transform = Transform3D(-0.241067, 0, 0, 0, 1, 0, 0, 0, -0.241067, -0.0363901, 0.119505, -0.00652385)
+mesh = SubResource("CylinderMesh_dfu62")
+skeleton = NodePath("../../DownRightResize")
+
 [node name="DownLeftResize" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.40238, 0.00725649, 0.912746)
-script = ExtResource("2_x382d")
+script = ExtResource("6_6wen5")
 x = -1
-z = -1
+z = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DownLeftResize"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0194743, 0.500453, -0.0165017)
 shape = SubResource("BoxShape3D_edm1x")
 
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="DownLeftResize"]
+transform = Transform3D(-0.241067, 0, 0, 0, 1, 0, 0, 0, -0.241067, 0.00215912, 0.122287, -0.010849)
+mesh = SubResource("CylinderMesh_dfu62")
+skeleton = NodePath("../../DownRightResize")
+
 [node name="DownRightResize" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.37815, 0.00568049, 0.901897)
-script = ExtResource("2_x382d")
+script = ExtResource("6_6wen5")
 x = 1
 z = 1
 
@@ -143,3 +106,7 @@ mesh = SubResource("CylinderMesh_dfu62")
 
 [node name="Node3D" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.52203, 0.844432, -1.00693)
+
+[node name="TextContainer" parent="." instance=ExtResource("5_iufej")]
+transform = Transform3D(1.97316, 0, 0, 0, 1.96679, 0, 0, 0, 1, 0, 1.07174, 0)
+texture = SubResource("ViewportTexture_vcmyu")

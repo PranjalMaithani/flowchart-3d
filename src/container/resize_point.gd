@@ -2,7 +2,7 @@ extends Area3D
 
 const ContainerBox = preload('./container_box.gd')
 
-var drag_and_drop = preload('../ui/drag_and_drop.gd').new({"area": self, "on_stop_dragging": on_stop_dragging})
+var drag_and_drop = preload('../ui/drag_and_drop.gd').new({"area": self})
 @onready var container_mesh: MeshInstance3D = %ContainerMesh
 var parent_container: ContainerBox
 var initial_position: Vector3
@@ -16,7 +16,18 @@ var ground_plane
 @export var x: int
 @export var z: int
 
-func on_stop_dragging():
+func update_position(caller: Area3D):
+    if(caller == self):
+        return
+
+    var new_mesh_scale = container_mesh.scale
+    var x_scale_delta = new_mesh_scale.x - initial_scale.x
+    var z_scale_delta = new_mesh_scale.z - initial_scale.z
+    var x_multiplier = 1 / (2 * x_scale_unit)
+    var z_multiplier = 1 / (2 * z_scale_unit)
+    var x_diff = x_scale_delta * x * x_multiplier
+    var z_diff = z_scale_delta * z * z_multiplier
+    position = Vector3(initial_position.x + x_diff, position.y, initial_position.z + z_diff)
     set_intial_values()
 
 func _ready():
@@ -31,6 +42,7 @@ func _ready():
     z_scale_unit = container_mesh.scale.z / (aabb_down_right.z - aabb_up_left.z)
     set_intial_values()
     parent_container.on_container_changed.connect(set_intial_values)
+    parent_container.on_container_changed.connect(update_position)
 
 func set_intial_values():
     initial_position = position
@@ -42,20 +54,20 @@ func handle_drag():
     var space_state = get_world_3d().direct_space_state
     var mouse_position = UIHelpers.get_floor_position_from_mouse(ground_plane, space_state, viewport_mouse_position, camera)
     var mouse_position_local = parent_container.to_local(mouse_position)
+    position = Vector3(mouse_position_local.x, position.y, mouse_position_local.z)
     
     var x_diff = position.x - initial_position.x
     var z_diff = position.z - initial_position.z
-    var x_scale_delta = x_scale_unit * x_diff * 2
-    var z_scale_delta = z_scale_unit * z_diff * 2
+    var x_scale_delta = x_scale_unit * x * x_diff * 2
+    var z_scale_delta = z_scale_unit * z * z_diff * 2
     var new_x_scale = initial_scale.x + x_scale_delta
     var new_z_scale = initial_scale.z + z_scale_delta
     var new_scale = Vector3(new_x_scale, initial_scale.y, new_z_scale)
-    
-    var x_middle = parent_initial_position.x + (x * x_diff)
-    var z_middle = parent_initial_position.z + (z * z_diff)
+    parent_container.on_container_changed.emit(self)
+    # var x_middle = parent_initial_position.x + (x * x_diff)
+    # var z_middle = parent_initial_position.z + (z * z_diff)
     
     container_mesh.scale = new_scale
-    position = Vector3(mouse_position_local.x, position.y, mouse_position_local.z)
     # parent_container.position = Vector3(x_middle, parent_container.position.y, z_middle)
     # parent_container.on_container_changed.emit()
     

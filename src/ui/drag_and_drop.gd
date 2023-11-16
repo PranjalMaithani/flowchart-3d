@@ -8,7 +8,7 @@ func _init(properties: Dictionary):
     area.input_event.connect(handle_mouse_event)
     area.mouse_entered.connect(handle_mouse_enter)
     area.mouse_exited.connect(handle_mouse_exit)
-    if(properties.on_stop_dragging):
+    if(properties.has("on_stop_dragging")):
         on_stop_dragging = properties.on_stop_dragging
 
 func handle_mouse_enter():
