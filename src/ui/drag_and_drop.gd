@@ -2,6 +2,7 @@ var area: Area3D
 var was_dragging: bool = false
 var is_dragging: bool = false
 var on_stop_dragging: Callable
+var cursor_shape: Input.CursorShape
 
 func _init(properties: Dictionary):
     area = properties.area
@@ -10,9 +11,12 @@ func _init(properties: Dictionary):
     area.mouse_exited.connect(handle_mouse_exit)
     if(properties.has("on_stop_dragging")):
         on_stop_dragging = properties.on_stop_dragging
+    if(properties.has("cursor_shape")):
+        cursor_shape = properties.cursor_shape
 
 func handle_mouse_enter():
-    Input.set_default_cursor_shape(Input.CURSOR_DRAG)
+    if(cursor_shape != null):
+        Input.set_default_cursor_shape(cursor_shape)
 
 func handle_mouse_exit():
     Input.set_default_cursor_shape(Input.CURSOR_ARROW)

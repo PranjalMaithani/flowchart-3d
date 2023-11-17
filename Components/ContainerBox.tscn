@@ -21,7 +21,7 @@ size = Vector3(0.258359, 0.954196, 0.236842)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_dfu62"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_rb834"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_5ksqg"]
 viewport_path = NodePath("SubViewport")
 
 [node name="ContainerBox" type="Node3D"]
@@ -54,6 +54,7 @@ mesh = SubResource("BoxMesh_0npq6")
 [node name="UpLeftResize" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4085, 0.00517057, -0.886555)
 script = ExtResource("6_6wen5")
+cursor_shape = 12
 x = -1
 z = -1
 
@@ -69,6 +70,7 @@ skeleton = NodePath("../../DownRightResize")
 [node name="UpRightResize" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.41454, 0.0100384, -0.896537)
 script = ExtResource("6_6wen5")
+cursor_shape = 11
 x = 1
 z = -1
 
@@ -84,6 +86,7 @@ skeleton = NodePath("../../DownRightResize")
 [node name="DownLeftResize" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.40238, 0.00725649, 0.912746)
 script = ExtResource("6_6wen5")
+cursor_shape = 11
 x = -1
 z = 1
 
@@ -99,6 +102,7 @@ skeleton = NodePath("../../DownRightResize")
 [node name="DownRightResize" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.37815, 0.00568049, 0.901897)
 script = ExtResource("6_6wen5")
+cursor_shape = 12
 x = 1
 z = 1
 
@@ -116,4 +120,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.52203, 0.844432, -1.00693)
 [node name="TextContainer" parent="." instance=ExtResource("5_iufej")]
 transform = Transform3D(1.97316, 0, 0, 0, 1.96679, 0, 0, 0, 1, 0, 1.07174, 0)
 visible = false
-texture = SubResource("ViewportTexture_rb834")
+texture = SubResource("ViewportTexture_5ksqg")

@@ -3,7 +3,7 @@ extends Area3D
 const ContainerBox = preload('./container_box.gd')
 @onready var container_mesh: MeshInstance3D = %ContainerMesh
 var parent_container: ContainerBox
-var drag_and_drop = preload('../ui/drag_and_drop.gd').new({"area": self, "on_stop_dragging": on_stop_dragging})
+var drag_and_drop = preload('../ui/drag_and_drop.gd').new({"area": self, "on_stop_dragging": on_stop_dragging, "cursor_shape": Input.CURSOR_DRAG})
 var container
 var camera
 var ground_plane

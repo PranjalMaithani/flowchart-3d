@@ -1,8 +1,10 @@
 extends Area3D
 
 const ContainerBox = preload('./container_box.gd')
+const DragAndDrop = preload('../ui/drag_and_drop.gd')
 
-var drag_and_drop = preload('../ui/drag_and_drop.gd').new({"area": self})
+@export var cursor_shape: Input.CursorShape
+var drag_and_drop: DragAndDrop
 @onready var container_mesh: MeshInstance3D = %ContainerMesh
 var parent_container: ContainerBox
 var initial_position: Vector3
@@ -31,6 +33,8 @@ func update_position(caller: Area3D):
     set_intial_values()
 
 func _ready():
+    drag_and_drop = DragAndDrop.new({"area": self, "cursor_shape": cursor_shape})
+
     #TODO: remove dependency from flowchart_scene node
     var app_manager = get_node("/root/flowchart_scene/AppManager") as AppManager
     camera = app_manager.camera
@@ -69,7 +73,7 @@ func handle_drag():
     container_mesh.scale = new_scale
     # parent_container.position = Vector3(x_middle, parent_container.position.y, z_middle)
     # parent_container.on_container_changed.emit()
-    
+
 func _process(_delta):
     if(drag_and_drop.is_dragging):
         handle_drag()
