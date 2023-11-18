@@ -1,10 +1,11 @@
+extends Node
 var area: Area3D
 var was_dragging: bool = false
 var is_dragging: bool = false
 var on_stop_dragging: Callable
 var cursor_shape: Input.CursorShape
 
-func _init(properties: Dictionary):
+func initialize(properties: Dictionary):
     area = properties.area
     area.input_event.connect(handle_mouse_event)
     area.mouse_entered.connect(handle_mouse_enter)

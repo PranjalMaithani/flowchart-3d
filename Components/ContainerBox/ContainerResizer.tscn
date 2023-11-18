@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://cryyf8m3gnfrs"]
+
+[ext_resource type="Script" path="res://src/container/resize_point.gd" id="1_ebjtj"]
+[ext_resource type="PackedScene" uid="uid://cpt5wqlmh812j" path="res://Components/UI/DragAndDrop.tscn" id="2_l6ru8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_edm1x"]
+size = Vector3(0.258359, 0.954196, 0.236842)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_dfu62"]
+
+[node name="DownRightResize" type="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.37815, 0.00568049, 0.901897)
+script = ExtResource("1_ebjtj")
+cursor_shape = 12
+x = 1
+z = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00560999, 0.472912, -0.00586492)
+shape = SubResource("BoxShape3D_edm1x")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.241067, 0, 0, 0, 1, 0, 0, 0, -0.241067, 0, 0.123863, 0)
+mesh = SubResource("CylinderMesh_dfu62")
+
+[node name="DragAndDrop" parent="." instance=ExtResource("2_l6ru8")]
+unique_name_in_owner = true

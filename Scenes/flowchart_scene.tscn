@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://cb2r105nqmjnr"]
 
 [ext_resource type="Material" uid="uid://c57ycd54txcqv" path="res://Materials/floor_dark.tres" id="1_jwrac"]
-[ext_resource type="PackedScene" uid="uid://pwytv1htyylm" path="res://Components/ContainerBox.tscn" id="1_nv32g"]
+[ext_resource type="PackedScene" uid="uid://pwytv1htyylm" path="res://Components/ContainerBox/ContainerBox.tscn" id="1_nv32g"]
 [ext_resource type="PackedScene" uid="uid://b338qhshxv8rp" path="res://Components/GameManager.tscn" id="2_6gx0o"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_p60a6"]

@@ -1,0 +1,55 @@
+[gd_scene load_steps=9 format=3 uid="uid://pwytv1htyylm"]
+
+[ext_resource type="Script" path="res://src/container/container_box.gd" id="1_h6xbw"]
+[ext_resource type="Material" uid="uid://b4k4y5oskkgcg" path="res://Materials/container_default.tres" id="2_2ooh6"]
+[ext_resource type="ArrayMesh" uid="uid://c4g2r8grndjii" path="res://Models/cap.obj" id="3_7uyt8"]
+[ext_resource type="PackedScene" uid="uid://bjhn2vl882fmd" path="res://Components/ContainerBox/ContainerGrabber.tscn" id="4_pqu1q"]
+[ext_resource type="PackedScene" uid="uid://cryyf8m3gnfrs" path="res://Components/ContainerBox/ContainerResizer.tscn" id="5_7jdvj"]
+[ext_resource type="PackedScene" uid="uid://dn37yfsub6u2l" path="res://Components/TextContainer.tscn" id="6_kbu4l"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_v2erc"]
+lightmap_size_hint = Vector2i(6, 10)
+size = Vector3(3, 1, 2)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_gcl2j"]
+viewport_path = NodePath("SubViewport")
+
+[node name="ContainerBox" type="Node3D"]
+script = ExtResource("1_h6xbw")
+
+[node name="ContainerMesh" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.487, -0.0221472)
+material_override = ExtResource("2_2ooh6")
+mesh = SubResource("BoxMesh_v2erc")
+
+[node name="Cap" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(0.028, 0, 0, 0, 0.028, 0, 0, 0, 0.028, 0.0026232, 0.00749826, 0.0013071)
+mesh = ExtResource("3_7uyt8")
+
+[node name="Grabber" parent="." instance=ExtResource("4_pqu1q")]
+
+[node name="DownRightResize" parent="." instance=ExtResource("5_7jdvj")]
+
+[node name="DownLeftResize" parent="." instance=ExtResource("5_7jdvj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.37698, 0.00568049, 0.901897)
+cursor_shape = 11
+x = -1
+
+[node name="UpLeftResize" parent="." instance=ExtResource("5_7jdvj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.37698, 0.00568049, -0.940596)
+x = -1
+z = -1
+
+[node name="UpRightResize" parent="." instance=ExtResource("5_7jdvj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.39711, 0.00568049, -0.940596)
+cursor_shape = 11
+z = -1
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.52203, 0.844432, -1.00693)
+
+[node name="TextContainer" parent="." instance=ExtResource("6_kbu4l")]
+transform = Transform3D(1.97316, 0, 0, 0, 1.96679, 0, 0, 0, 1, 0, 1.40414, 0)
+texture = SubResource("ViewportTexture_gcl2j")

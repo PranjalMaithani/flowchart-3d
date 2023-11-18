@@ -4,8 +4,8 @@ const ContainerBox = preload('./container_box.gd')
 const DragAndDrop = preload('../ui/drag_and_drop.gd')
 
 @export var cursor_shape: Input.CursorShape
-var drag_and_drop: DragAndDrop
-@onready var container_mesh: MeshInstance3D = %ContainerMesh
+@onready var drag_and_drop: DragAndDrop = %DragAndDrop
+@onready var container_mesh: MeshInstance3D = $"../%ContainerMesh"
 var parent_container: ContainerBox
 var initial_position: Vector3
 var parent_initial_position: Vector3
@@ -33,7 +33,7 @@ func update_position(caller: Area3D):
     set_intial_values()
 
 func _ready():
-    drag_and_drop = DragAndDrop.new({"area": self, "cursor_shape": cursor_shape})
+    drag_and_drop.initialize({"area": self, "cursor_shape": cursor_shape})
 
     #TODO: remove dependency from flowchart_scene node
     var app_manager = get_node("/root/flowchart_scene/AppManager") as AppManager
