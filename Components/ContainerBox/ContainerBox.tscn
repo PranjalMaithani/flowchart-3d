@@ -11,7 +11,7 @@
 lightmap_size_hint = Vector2i(6, 10)
 size = Vector3(3, 1, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_gcl2j"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_ywuta"]
 viewport_path = NodePath("SubViewport")
 
 [node name="ContainerBox" type="Node3D"]
@@ -23,9 +23,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.487, -0.0221472)
 material_override = ExtResource("2_2ooh6")
 mesh = SubResource("BoxMesh_v2erc")
 
-[node name="Cap" type="MeshInstance3D" parent="."]
+[node name="TestMesh" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(0.028, 0, 0, 0, 0.028, 0, 0, 0, 0.028, 0.0026232, 0.00749826, 0.0013071)
+transform = Transform3D(0.028, 0, 0, 0, 0.028, 0, 0, 0, 0.028, 0.0026232, 0.654074, 0.0013071)
 mesh = ExtResource("3_7uyt8")
 
 [node name="Grabber" parent="." instance=ExtResource("4_pqu1q")]
@@ -51,5 +51,5 @@ z = -1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.52203, 0.844432, -1.00693)
 
 [node name="TextContainer" parent="." instance=ExtResource("6_kbu4l")]
-transform = Transform3D(1.97316, 0, 0, 0, 1.96679, 0, 0, 0, 1, 0, 1.40414, 0)
-texture = SubResource("ViewportTexture_gcl2j")
+transform = Transform3D(1.97316, 0, 0, 0, -8.59711e-08, 1, 0, -1.96679, -4.37114e-08, 0, 1.55138, 0)
+texture = SubResource("ViewportTexture_ywuta")

@@ -33,7 +33,7 @@ func update_position(caller: Area3D):
     set_intial_values()
 
 func _ready():
-    drag_and_drop.initialize({"area": self, "cursor_shape": cursor_shape})
+    drag_and_drop.initialize({"area": self, "cursor_shape": cursor_shape, "on_stop_dragging": set_intial_values})
 
     #TODO: remove dependency from flowchart_scene node
     var app_manager = get_node("/root/flowchart_scene/AppManager") as AppManager
@@ -53,11 +53,9 @@ func set_intial_values():
     parent_initial_position = parent_container.position
 
 func handle_drag():
-    var viewport_mouse_position = get_viewport().get_mouse_position()
-    var space_state = get_world_3d().direct_space_state
-    var mouse_position = UIHelpers.get_floor_position_from_mouse(ground_plane, space_state, viewport_mouse_position, camera)
-    var mouse_position_local = parent_container.to_local(mouse_position)
-    position = Vector3(mouse_position_local.x, position.y, mouse_position_local.z)
+    var mouse_position_difference = drag_and_drop.mouse_position_difference
+    var new_position = initial_position + mouse_position_difference
+    position = Vector3(new_position.x, position.y, new_position.z)
     
     var x_diff = position.x - initial_position.x
     var z_diff = position.z - initial_position.z

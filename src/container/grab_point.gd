@@ -9,6 +9,8 @@ var container
 var camera
 var ground_plane
 
+var initial_position: Vector3
+
 func _ready():
     container = get_parent_node_3d()
     #TODO: remove dependency from flowchart_scene node
@@ -18,17 +20,17 @@ func _ready():
     parent_container = get_parent_node_3d()
     parent_container.on_container_changed.connect(update_scale)
     drag_and_drop.initialize({"area": self, "on_stop_dragging": on_stop_dragging, "cursor_shape": Input.CURSOR_DRAG})
+    initial_position = container.position
 
 func update_scale(_caller):
     scale = container_mesh.scale
 
 func on_stop_dragging():
     parent_container.on_container_changed.emit()
+    initial_position = container.position
 
 func _process(_delta):
     if(drag_and_drop.is_dragging):
-        var viewport_mouse_position = get_viewport().get_mouse_position()
-        var space_state = get_world_3d().direct_space_state
-        var mouse_position = UIHelpers.get_floor_position_from_mouse(ground_plane, space_state, viewport_mouse_position, camera)
-        container.position.x = mouse_position.x
-        container.position.z = mouse_position.z
+        var mouse_position_difference = drag_and_drop.mouse_position_difference
+        container.position.x = initial_position.x + mouse_position_difference.x
+        container.position.z = initial_position.z + mouse_position_difference.z
