@@ -50,8 +50,6 @@ func handle_dragging(event: InputEventMouseButton):
     is_dragging = event.is_pressed()
     if(is_dragging):
         update_mouse_position()
-    if(was_dragging && !is_dragging && on_stop_dragging):
-        on_stop_dragging.call()
 
     was_dragging = is_dragging
 
@@ -63,6 +61,7 @@ func handle_mouse_event(_camera:Node, event:InputEvent, _event_position:Vector3,
         if(on_stop_dragging):
             on_stop_dragging.call()
         return
+    
     if(!UIHelpers.is_left_mouse_click(event)):
         return
     handle_dragging(event)

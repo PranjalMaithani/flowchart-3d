@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cb2r105nqmjnr"]
+[gd_scene load_steps=10 format=3 uid="uid://cb2r105nqmjnr"]
 
 [ext_resource type="Material" uid="uid://c57ycd54txcqv" path="res://Materials/floor_dark.tres" id="1_jwrac"]
 [ext_resource type="PackedScene" uid="uid://pwytv1htyylm" path="res://Components/ContainerBox/ContainerBox.tscn" id="1_nv32g"]
@@ -31,16 +31,13 @@ _data = {
 }
 point_count = 3
 
-[sub_resource type="TubeTrailMesh" id="TubeTrailMesh_jkpjv"]
-section_length = 1.185
-
 [node name="flowchart_scene" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ldxxl")
 
 [node name="Floor" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.58357, 0, 0, 0, 1, 0, 0, 0, 1, 6.11342, 0, 14.7283)
+transform = Transform3D(0.951726, 0, 0, 0, 0.601, 0, 0, 0, 0.601, 6.11342, 0, 0.836246)
 mesh = SubResource("PlaneMesh_yinng")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Floor"]
@@ -75,14 +72,6 @@ light_energy = 1.495
 spot_range = 15.0
 spot_angle = 32.3512
 
-[node name="Node3D" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.62388, 1.04806, -4.57963)
-
 [node name="Path3D" type="Path3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.778, 0, 0)
 curve = SubResource("Curve3D_b6mxa")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.778, 0, 0)
-mesh = SubResource("TubeTrailMesh_jkpjv")
-skeleton = NodePath("../Path3D")
