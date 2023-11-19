@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cb2r105nqmjnr"]
+[gd_scene load_steps=11 format=3 uid="uid://cb2r105nqmjnr"]
 
 [ext_resource type="Material" uid="uid://c57ycd54txcqv" path="res://Materials/floor_dark.tres" id="1_jwrac"]
 [ext_resource type="PackedScene" uid="uid://pwytv1htyylm" path="res://Components/ContainerBox/ContainerBox.tscn" id="1_nv32g"]
@@ -24,6 +24,16 @@ size = Vector2(100, 100)
 [sub_resource type="BoxShape3D" id="BoxShape3D_beqyu"]
 size = Vector3(100, 0.00944167, 100)
 
+[sub_resource type="Curve3D" id="Curve3D_b6mxa"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.67169, 1.13565, -0.999158, -2.42842, 0, 0, 2.42842, 0, 0, 3.23785, 0.385561, -3.70793, 0, 0, 0, 0, 0, 0, 7.36757, 0, -0.591974),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
+[sub_resource type="TubeTrailMesh" id="TubeTrailMesh_jkpjv"]
+section_length = 1.185
+
 [node name="flowchart_scene" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -46,7 +56,7 @@ transform = Transform3D(0.918446, 0.303449, -0.253723, 0, 0.64145, 0.767165, 0.3
 projection = 1
 current = true
 fov = 5.9
-size = 15.0
+size = 23.4292
 near = 0.003
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -67,3 +77,12 @@ spot_angle = 32.3512
 
 [node name="Node3D" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.62388, 1.04806, -4.57963)
+
+[node name="Path3D" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.778, 0, 0)
+curve = SubResource("Curve3D_b6mxa")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.778, 0, 0)
+mesh = SubResource("TubeTrailMesh_jkpjv")
+skeleton = NodePath("../Path3D")
