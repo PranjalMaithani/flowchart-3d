@@ -1,11 +1,13 @@
 extends Area3D
 
 const ContainerBox = preload('./container_box.gd')
+const PositionUpdater = preload('./position_updater.gd')
 const DragAndDrop = preload('../ui/drag_and_drop.gd')
 
 @export var cursor_shape: Input.CursorShape
 @onready var drag_and_drop: DragAndDrop = %DragAndDrop
 @onready var container_mesh: MeshInstance3D = $"../%ContainerMesh"
+@onready var position_updater: PositionUpdater = $"../%PositionUpdater"
 var parent_container: ContainerBox
 var initial_position: Vector3
 var parent_initial_position: Vector3
@@ -21,31 +23,21 @@ var ground_plane
 func update_position(caller: Area3D):
     if(caller == self):
         return
-
-    var new_mesh_scale = container_mesh.scale
-    var x_scale_delta = new_mesh_scale.x - initial_scale.x
-    var z_scale_delta = new_mesh_scale.z - initial_scale.z
-    var x_multiplier = 1 / (2 * x_scale_unit)
-    var z_multiplier = 1 / (2 * z_scale_unit)
-    var x_diff = x_scale_delta * x * x_multiplier
-    var z_diff = z_scale_delta * z * z_multiplier
-    position = Vector3(initial_position.x + x_diff, position.y, initial_position.z + z_diff)
+    position = position_updater.update_position(self)
     set_intial_values()
 
 func _ready():
+    x = 1 if position.x > 0 else -1
+    z = 1 if position.z > 0 else -1
     drag_and_drop.initialize({"area": self, "cursor_shape": cursor_shape, "on_stop_dragging": set_intial_values})
-
     #TODO: remove dependency from flowchart_scene node
     var app_manager = get_node("/root/flowchart_scene/AppManager") as AppManager
     camera = app_manager.camera
     ground_plane = app_manager.ground_plane
     parent_container = get_parent_node_3d()
-    var aabb_up_left = transform * container_mesh.get_aabb().get_endpoint(0)
-    var aabb_down_right = transform * container_mesh.get_aabb().get_endpoint(7)
-    x_scale_unit = container_mesh.scale.x / (aabb_down_right.x - aabb_up_left.x)
-    z_scale_unit = container_mesh.scale.z / (aabb_down_right.z - aabb_up_left.z)
     set_intial_values()
     parent_container.on_container_changed.connect(update_position)
+    position_updater.initialize_position(self)
 
 func set_intial_values():
     initial_position = position
@@ -59,8 +51,8 @@ func handle_drag():
     
     var x_diff = position.x - initial_position.x
     var z_diff = position.z - initial_position.z
-    var x_scale_delta = x_scale_unit * x * x_diff * 2
-    var z_scale_delta = z_scale_unit * z * z_diff * 2
+    var x_scale_delta = position_updater.x_scale_unit * x * x_diff * 2
+    var z_scale_delta = position_updater.z_scale_unit * z * z_diff * 2
     var new_x_scale = initial_scale.x + x_scale_delta
     var new_z_scale = initial_scale.z + z_scale_delta
     var new_scale = Vector3(new_x_scale, initial_scale.y, new_z_scale)

@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://b47tyrqs0w3kr"]
+[gd_scene load_steps=4 format=3 uid="uid://b47tyrqs0w3kr"]
+
+[ext_resource type="Script" path="res://src/container/plug_in.gd" id="1_3ap3p"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_y084u"]
 top_radius = 0.2
@@ -8,6 +10,7 @@ bottom_radius = 0.2
 size = Vector3(0.533994, 0.403527, 0.401322)
 
 [node name="PlugIn" type="Node3D"]
+script = ExtResource("1_3ap3p")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(-4.37827e-08, -0.268058, 0, 1.00163, -1.17172e-08, 0, 0, 0, 1.00163, 0, 0, 0)
