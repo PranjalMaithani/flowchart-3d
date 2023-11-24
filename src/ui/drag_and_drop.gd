@@ -18,11 +18,10 @@ func _ready():
     ground_plane = app_manager.ground_plane
 
 func initialize(properties: Dictionary):
-    if(properties.has("area")):
-        area = properties.area
-        area.input_event.connect(handle_mouse_event)
-        area.mouse_entered.connect(handle_mouse_enter)
-        area.mouse_exited.connect(handle_mouse_exit)
+    area = properties.area
+    area.input_event.connect(handle_mouse_event)
+    area.mouse_entered.connect(handle_mouse_enter)
+    area.mouse_exited.connect(handle_mouse_exit)
     if(properties.has("on_stop_dragging")):
         on_stop_dragging = properties.on_stop_dragging
     if(properties.has("cursor_shape")):
@@ -53,9 +52,8 @@ func handle_dragging(event: InputEventMouseButton):
 
     was_dragging = is_dragging
 
-# Used when area has been passed
 func handle_mouse_event(_camera:Node, event:InputEvent, _event_position:Vector3, _normal:Vector3, _shape_idx:int):
-    if(Input.is_action_just_released("mouse1")):
+    if(is_dragging && Input.is_action_just_released("mouse1")):
         is_dragging = false
         was_dragging = false
         if(on_stop_dragging):
@@ -65,14 +63,6 @@ func handle_mouse_event(_camera:Node, event:InputEvent, _event_position:Vector3,
     if(!UIHelpers.is_left_mouse_click(event)):
         return
     handle_dragging(event)
-
-# Used when there is no area
-func _input(event):
-    if(area != null):
-        return # let area signals handle input
-    if(!UIHelpers.is_left_mouse_click(event)):
-        return
-    handle_dragging(event as InputEventMouseButton)
 
 func _process(_delta):
     if(!is_dragging):

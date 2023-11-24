@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://dwe7vhsa8rw75"]
+
+[ext_resource type="Script" path="res://src/curves/draw_curve.gd" id="1_ba7k3"]
+[ext_resource type="Script" path="res://addons/curvemesh3d/curvemesh3d.gd" id="2_0gcna"]
+
+[sub_resource type="Curve3D" id="Curve3D_v8hhj"]
+bake_interval = 0.1
+_data = {
+"points": PackedVector3Array(0.6, 0.46, 0, 0.6, 0.46, 0, 0, 0, 0, -0.6, -0.46, 0, -0.6, -0.46, 0, 0, 1, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_4fghx"]
+_data = [Vector2(0, 0.515789), 0.0, 0.0, 0, 0, Vector2(0.965074, 0.4), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ajy3x"]
+albedo_color = Color(0, 0.615686, 0.882353, 1)
+roughness = 0.5
+
+[node name="DrawCurve" type="Node3D"]
+script = ExtResource("1_ba7k3")
+
+[node name="CurveMesh3D" type="Path3D" parent="."]
+unique_name_in_owner = true
+curve = SubResource("Curve3D_v8hhj")
+script = ExtResource("2_0gcna")
+radius = 0.22
+radius_profile = SubResource("Curve_4fghx")
+material = SubResource("StandardMaterial3D_ajy3x")

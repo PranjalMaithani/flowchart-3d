@@ -2,14 +2,23 @@ extends Node3D
 const DragAndDrop = preload('../ui/drag_and_drop.gd')
 const CurveMesh3D = preload('res://addons/curvemesh3d/curvemesh3d.gd')
 var curve: Curve3D
-var curveMesh: CurveMesh3D
+@onready var curveMesh: CurveMesh3D = %CurveMesh3D
 var drag_and_drop: DragAndDrop
 
 func _ready():
     curve = Curve3D.new()
-    for n in 1:
-        curve.add_point(position + Vector3.ONE * n)
+    #TODO: draw better curves instead of linear
+    for n in 2:
+        curve.add_point(position)
+    curveMesh.curve = curve
+    disable_curve()
 
-func draw_curve(from: Vector3, to: Vector3):
-    curve.set_point_position(0, from)
-    curve.set_point_position(1, to)
+func set_endpoint(endpoint: Vector3):
+    var endpoint_local = to_local(endpoint)
+    curve.set_point_position(1, endpoint_local)
+
+func enable_curve():
+    visible = true
+
+func disable_curve():
+    visible = false

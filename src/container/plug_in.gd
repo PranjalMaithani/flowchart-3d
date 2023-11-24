@@ -1,8 +1,7 @@
-extends Node3D
+extends Area3D
 const ContainerBox = preload('./container_box.gd')
 const PositionUpdater = preload('./position_updater.gd')
 
-@onready var area: Area3D = %Area3D
 @onready var position_updater: PositionUpdater = $"../%PositionUpdater"
 #TODO: remove dependency from flowchart_scene node
 @onready var app_manager: AppManager = get_node("/root/flowchart_scene/AppManager") as AppManager

@@ -7,16 +7,14 @@ top_radius = 0.2
 bottom_radius = 0.2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_panyn"]
-size = Vector3(0.533994, 0.403527, 0.401322)
+size = Vector3(0.650929, 1.22358, 1.07287)
 
-[node name="PlugIn" type="Node3D"]
+[node name="PlugIn" type="Area3D"]
 script = ExtResource("1_3ap3p")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(-4.37827e-08, -0.268058, 0, 1.00163, -1.17172e-08, 0, 0, 0, 1.00163, 0, 0, 0)
 mesh = SubResource("CylinderMesh_y084u")
 
-[node name="Area3D" type="Area3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_panyn")

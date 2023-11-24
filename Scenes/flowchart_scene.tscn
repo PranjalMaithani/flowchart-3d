@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cb2r105nqmjnr"]
+[gd_scene load_steps=11 format=3 uid="uid://cb2r105nqmjnr"]
 
 [ext_resource type="Material" uid="uid://c57ycd54txcqv" path="res://Materials/floor_dark.tres" id="1_jwrac"]
 [ext_resource type="PackedScene" uid="uid://pwytv1htyylm" path="res://Components/ContainerBox/ContainerBox.tscn" id="1_nv32g"]
@@ -31,6 +31,9 @@ _data = {
 }
 point_count = 3
 
+[sub_resource type="BoxMesh" id="BoxMesh_n7etl"]
+size = Vector3(0.2, 0.2, 0.2)
+
 [node name="flowchart_scene" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -62,6 +65,9 @@ light_energy = 1.254
 
 [node name="ContainerBox" parent="." instance=ExtResource("1_nv32g")]
 
+[node name="ContainerBox2" parent="." instance=ExtResource("1_nv32g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.44509, 0, -2.52348)
+
 [node name="AppManager" parent="." node_paths=PackedStringArray("ground_plane", "camera") instance=ExtResource("2_6gx0o")]
 ground_plane = NodePath("../Floor")
 camera = NodePath("../Camera3D")
@@ -75,3 +81,7 @@ spot_angle = 32.3512
 [node name="Path3D" type="Path3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.778, 0, 0)
 curve = SubResource("Curve3D_b6mxa")
+
+[node name="snap test" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.706, 0.684, -1.92)
+mesh = SubResource("BoxMesh_n7etl")

@@ -14,7 +14,7 @@
 lightmap_size_hint = Vector2i(6, 10)
 size = Vector3(3, 1, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_ii5tn"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_kpax3"]
 viewport_path = NodePath("SubViewport")
 
 [node name="ContainerBox" type="Node3D"]
@@ -56,13 +56,13 @@ z = 0
 
 [node name="TextContainer" parent="." instance=ExtResource("6_kbu4l")]
 transform = Transform3D(1.97316, 0, 0, 0, -8.59711e-08, 1, 0, -1.96679, -4.37114e-08, 0, 1.55138, 0)
-texture = SubResource("ViewportTexture_ii5tn")
+texture = SubResource("ViewportTexture_kpax3")
 
 [node name="PlugOut" parent="." instance=ExtResource("7_ccnpv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.64959, 0.685506, -0.498506)
 
 [node name="PlugIn" parent="." instance=ExtResource("8_xnbbf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.73953, 0.557374, 0.60319)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.73953, 0.68431, 0.60319)
 
 [node name="PositionUpdater" type="Node3D" parent="."]
 unique_name_in_owner = true

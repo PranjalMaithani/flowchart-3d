@@ -4,7 +4,7 @@ extends SubViewport
 @onready var text_panel: PanelContainer = %TextPanel
 
 func _ready():
-    print(text_panel.size)
+    pass
 
 #TODO: update size through events
 func _process(delta):
