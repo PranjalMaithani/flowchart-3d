@@ -1,7 +1,7 @@
 extends Node3D
 const ContainerBox = preload('./container_box.gd')
 const PositionUpdater = preload('./position_updater.gd')
-const PlugIn = preload('./plug_in.gd')
+const ConnectIn = preload('./connect_in.gd')
 const DrawCurve = preload('../curves/draw_curve.gd')
 const DragStartPoint = preload('../ui/DragPoints/drag_start_point.gd')
 const SnapArea = preload('../ui/snap_area.gd')
@@ -15,19 +15,24 @@ const SnapArea = preload('../ui/snap_area.gd')
 @onready var app_manager: AppManager = get_node("/root/flowchart_scene/AppManager") as AppManager
 var parent_container: ContainerBox
 
-var connected_plug: PlugIn
+var connected_plug: ConnectIn
+
+func check_snap_curve():
+    if(snap_area.snapped_object):
+        var snap_position = snap_area.snapped_object.global_position
+        draw_curve.set_endpoint(Vector3(snap_position.x, position.y, snap_position.z))
+        snap_area.snapped_object.set_connection(self)
 
 func update_position(_caller: Area3D):
     position = position_updater.update_position(self)
+    check_snap_curve()
 
-func connect_to_plug_in():
+func look_for_connections():
     snap_area.position = to_local(Vector3(drag_start_point.mouse_position.x, position.y, drag_start_point.mouse_position. z))
-    if(snap_area.snapped_object):
-        var snap_position_local = parent_container.to_local(snap_area.snapped_object.global_position)
-        draw_curve.set_endpoint(Vector3(snap_position_local.x, position.y, snap_position_local.z))
+    check_snap_curve()
 
 func _ready():
-    snap_area.set_snap_class(PlugIn)
+    snap_area.set_snap_class(ConnectIn)
     parent_container = get_parent_node_3d()
     position_updater.initialize_position(self)
     parent_container.on_container_changed.connect(update_position)
@@ -39,7 +44,7 @@ func _ready():
 func _process(_delta):
     if(drag_start_point.is_dragging):
         draw_curve.set_endpoint(drag_start_point.mouse_position)
-        connect_to_plug_in()
+        look_for_connections()
 
 func on_start_dragging():
     draw_curve.enable_curve()

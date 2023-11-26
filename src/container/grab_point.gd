@@ -26,7 +26,6 @@ func update_scale(_caller):
     scale = container_mesh.scale
 
 func on_stop_dragging():
-    parent_container.on_container_changed.emit()
     initial_position = container.position
 
 func _process(_delta):
@@ -34,3 +33,4 @@ func _process(_delta):
         var mouse_position_difference = drag_and_drop.mouse_position_difference
         container.position.x = initial_position.x + mouse_position_difference.x
         container.position.z = initial_position.z + mouse_position_difference.z
+        parent_container.on_container_changed.emit(self)

@@ -53,16 +53,16 @@ func handle_dragging(event: InputEventMouseButton):
     was_dragging = is_dragging
 
 func handle_mouse_event(_camera:Node, event:InputEvent, _event_position:Vector3, _normal:Vector3, _shape_idx:int):
+    if(!UIHelpers.is_left_mouse_click(event)):
+        return
+    handle_dragging(event)
+
+func _input(_event):
     if(is_dragging && Input.is_action_just_released("mouse1")):
         is_dragging = false
         was_dragging = false
         if(on_stop_dragging):
             on_stop_dragging.call()
-        return
-    
-    if(!UIHelpers.is_left_mouse_click(event)):
-        return
-    handle_dragging(event)
 
 func _process(_delta):
     if(!is_dragging):

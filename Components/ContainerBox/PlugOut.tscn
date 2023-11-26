@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://umio61skacvx"]
 
-[ext_resource type="Script" path="res://src/container/plug_out.gd" id="1_d73lp"]
+[ext_resource type="Script" path="res://src/container/connect_out.gd" id="1_oumux"]
 [ext_resource type="Script" path="res://src/ui/DragPoints/drag_start_point.gd" id="2_bp7tp"]
 [ext_resource type="PackedScene" uid="uid://dwe7vhsa8rw75" path="res://Components/Curves/DrawCurve.tscn" id="3_usfah"]
 [ext_resource type="Script" path="res://src/ui/snap_area.gd" id="4_kms6t"]
@@ -17,7 +17,7 @@ size = Vector3(0.342671, 0.340738, 0.329887)
 size = Vector3(0.32, 0.32, 0.32)
 
 [node name="PlugOut" type="Node3D"]
-script = ExtResource("1_d73lp")
+script = ExtResource("1_oumux")
 
 [node name="CylinderMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(-7.6932e-09, 0.176, 0, -0.34408, -1.50402e-08, 0, 0, 0, 0.34408, 0, 0, 0)
