@@ -19,11 +19,9 @@ func _ready():
     parent_container.on_container_changed.connect(update_position)
 
 func set_connection(value: ConnectOut):
-    print("connection set = ", value)
     connected_node = value
 
 func update_connected_node():
     if(connected_node == null):
         return
-    print("update connected node called")
     connected_node.update_position(self)

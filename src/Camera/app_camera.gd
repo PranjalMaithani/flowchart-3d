@@ -3,11 +3,13 @@ const CameraPan = preload('./camera_pan.gd')
 
 @export var PAN_SENSITIVITY = 0.7
 @onready var camera_pan = %CameraPan
+@onready var camera_zoom = %CameraZoom
 
 var initial_position: Vector3
 
 func _ready():
     camera_pan.initialize({"camera": self, "on_stop_dragging": on_stop_dragging})
+    camera_zoom.initialize({"camera": self})
 
 func on_stop_dragging():
     initial_position = position

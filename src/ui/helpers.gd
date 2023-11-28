@@ -1,7 +1,6 @@
 class_name UIHelpers
 
 static func is_left_mouse_click(event: InputEvent):
-    return event is InputEventMouseButton
     return event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT
 
 static func get_floor_position_from_mouse(ground_plane: Node3D, space_state: PhysicsDirectSpaceState3D, mouse_position: Vector2, camera: Camera3D):
