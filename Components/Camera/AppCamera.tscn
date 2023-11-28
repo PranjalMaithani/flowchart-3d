@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://vu8lwtm68c6t"]
+
+[ext_resource type="Script" path="res://src/Camera/app_camera.gd" id="1_fqkkr"]
+[ext_resource type="Script" path="res://src/Camera/camera_pan.gd" id="2_7q3jt"]
+
+[node name="AppCamera" type="Camera3D"]
+projection = 1
+current = true
+fov = 5.9
+size = 23.4292
+near = 0.003
+script = ExtResource("1_fqkkr")
+
+[node name="CameraPan" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_7q3jt")

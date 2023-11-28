@@ -47,6 +47,7 @@ func handle_dragging(event: InputEventMouseButton):
         if(on_start_dragging):
             on_start_dragging.call()
     if(is_dragging):
+        app_manager.active_object = area
         update_mouse_position()
 
     was_dragging = is_dragging
@@ -58,6 +59,7 @@ func handle_mouse_event(_camera:Node, event:InputEvent, _event_position:Vector3,
 
 func _input(_event):
     if(is_dragging && Input.is_action_just_released("mouse1")):
+        app_manager.active_object = null
         is_dragging = false
         was_dragging = false
         if(on_stop_dragging):

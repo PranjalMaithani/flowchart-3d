@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://cb2r105nqmjnr"]
+[gd_scene load_steps=12 format=3 uid="uid://cb2r105nqmjnr"]
 
 [ext_resource type="Material" uid="uid://c57ycd54txcqv" path="res://Materials/floor_dark.tres" id="1_jwrac"]
 [ext_resource type="PackedScene" uid="uid://pwytv1htyylm" path="res://Components/ContainerBox/ContainerBox.tscn" id="1_nv32g"]
 [ext_resource type="PackedScene" uid="uid://b338qhshxv8rp" path="res://Components/GameManager.tscn" id="2_6gx0o"]
+[ext_resource type="PackedScene" uid="uid://vu8lwtm68c6t" path="res://Components/Camera/AppCamera.tscn" id="2_m4467"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_p60a6"]
 sky_top_color = Color(0.411765, 0.482353, 0.584314, 1)
@@ -51,14 +52,6 @@ collision_mask = 3
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00306225, 0)
 shape = SubResource("BoxShape3D_beqyu")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.918446, 0.303449, -0.253723, 0, 0.64145, 0.767165, 0.395546, -0.7046, 0.589137, -6.86779, 17.2574, 17.6229)
-projection = 1
-current = true
-fov = 5.9
-size = 23.4292
-near = 0.003
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.614835, 0.46181, -0.639304, 0.181361, 0.706107, 0.684486, 0.767519, -0.536791, 0.350385, -3.11844, 4.31145, 3.83666)
 light_energy = 1.254
@@ -70,7 +63,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.44509, 0, -2.52348)
 
 [node name="AppManager" parent="." node_paths=PackedStringArray("ground_plane", "camera") instance=ExtResource("2_6gx0o")]
 ground_plane = NodePath("../Floor")
-camera = NodePath("../Camera3D")
+camera = NodePath("../AppCamera")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(0.999256, -0.00848121, -0.0376174, 0.0369439, -0.0690301, 0.99693, -0.0110519, -0.997579, -0.0686654, 0.982482, 9.09849, -0.131702)
@@ -82,6 +75,9 @@ spot_angle = 32.3512
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.778, 0, 0)
 curve = SubResource("Curve3D_b6mxa")
 
-[node name="snap test" type="MeshInstance3D" parent="."]
+[node name="Test box" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.706, 0.684, -1.92)
 mesh = SubResource("BoxMesh_n7etl")
+
+[node name="AppCamera" parent="." instance=ExtResource("2_m4467")]
+transform = Transform3D(0.972881, 0.174686, -0.151617, 0, 0.655479, 0.755213, 0.231306, -0.734733, 0.637703, 0, 10.3716, 8.52658)

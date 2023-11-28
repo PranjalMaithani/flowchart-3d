@@ -4,6 +4,7 @@ var was_dragging: bool = false
 var is_dragging: bool = false
 var on_stop_dragging: Callable
 var cursor_shape: Input.CursorShape
+var app_manager: AppManager
 var ground_plane
 var camera
 
@@ -13,7 +14,7 @@ var mouse_position_difference: Vector3
 
 func _ready():
     #TODO: remove dependency from flowchart_scene node
-    var app_manager = get_node("/root/flowchart_scene/AppManager") as AppManager
+    app_manager = get_node("/root/flowchart_scene/AppManager") as AppManager
     camera = app_manager.camera
     ground_plane = app_manager.ground_plane
 
@@ -48,6 +49,7 @@ func update_mouse_position():
 func handle_dragging(event: InputEventMouseButton):
     is_dragging = event.is_pressed()
     if(is_dragging):
+        app_manager.active_object = area
         update_mouse_position()
 
     was_dragging = is_dragging
@@ -59,6 +61,7 @@ func handle_mouse_event(_camera:Node, event:InputEvent, _event_position:Vector3,
 
 func _input(_event):
     if(is_dragging && Input.is_action_just_released("mouse1")):
+        app_manager.active_object = null
         is_dragging = false
         was_dragging = false
         if(on_stop_dragging):
