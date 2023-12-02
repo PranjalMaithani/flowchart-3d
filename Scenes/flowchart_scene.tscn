@@ -1,9 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://cb2r105nqmjnr"]
+[gd_scene load_steps=14 format=3 uid="uid://cb2r105nqmjnr"]
 
 [ext_resource type="Material" uid="uid://c57ycd54txcqv" path="res://Materials/floor_dark.tres" id="1_jwrac"]
 [ext_resource type="PackedScene" uid="uid://pwytv1htyylm" path="res://Components/ContainerBox/ContainerBox.tscn" id="1_nv32g"]
 [ext_resource type="PackedScene" uid="uid://b338qhshxv8rp" path="res://Components/GameManager.tscn" id="2_6gx0o"]
 [ext_resource type="PackedScene" uid="uid://vu8lwtm68c6t" path="res://Components/Camera/AppCamera.tscn" id="2_m4467"]
+[ext_resource type="PackedScene" uid="uid://dx1oqd64dc0mt" path="res://UI/ToolButton.tscn" id="5_0ubfu"]
+[ext_resource type="Texture2D" uid="uid://b836fou3pi361" path="res://Images/text icon.png" id="6_v7x57"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_p60a6"]
 sky_top_color = Color(0.411765, 0.482353, 0.584314, 1)
@@ -81,3 +83,32 @@ mesh = SubResource("BoxMesh_n7etl")
 
 [node name="AppCamera" parent="." instance=ExtResource("2_m4467")]
 transform = Transform3D(0.972881, 0.174686, -0.151617, 0, 0.655479, 0.755213, 0.231306, -0.734733, 0.637703, 0, 10.3716, 8.52658)
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ToolButton" parent="UI" instance=ExtResource("5_0ubfu")]
+layout_mode = 2
+offset_bottom = 56.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+mouse_default_cursor_shape = 2
+
+[node name="ToolButton2" parent="UI" instance=ExtResource("5_0ubfu")]
+layout_mode = 2
+offset_top = 55.0
+offset_bottom = 111.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+mouse_default_cursor_shape = 2
+
+[node name="Icon" parent="UI/ToolButton2" index="0"]
+texture = ExtResource("6_v7x57")
+
+[editable path="UI/ToolButton2"]

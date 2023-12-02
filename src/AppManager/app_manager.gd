@@ -5,3 +5,4 @@ class_name AppManager
 @export var camera: Camera3D
 
 var active_object
+var selected_objects: Array[Node]
