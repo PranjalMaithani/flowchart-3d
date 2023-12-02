@@ -1,16 +1,10 @@
-extends Node3D
+extends Resource
 class_name AppState
 
-var state: Dictionary
+var active_tool: Constants.TOOL
 
-func add_state(value: Node):
-    pass
+func set_active_tool(value: Constants.TOOL):
+    active_tool = value
 
-func get_state(value: Node):
-    pass
-
-func update_state(value: Node):
-    pass
-
-func delete_state(value: Node):
-    pass
+var active_object
+var selected_objects: Array[Node]

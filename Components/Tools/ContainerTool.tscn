@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://cwdi2sajlnasl"]
+
+[ext_resource type="PackedScene" uid="uid://dx1oqd64dc0mt" path="res://Components/Tools/ToolButton.tscn" id="1_gh62l"]
+
+[node name="ContainerTool" type="MarginContainer"]
+anchors_preset = -1
+anchor_right = 0.0546875
+anchor_bottom = 0.108025
+offset_bottom = -0.000198364
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ToolButton" parent="." instance=ExtResource("1_gh62l")]
+layout_mode = 2
+
+[editable path="ToolButton"]

@@ -28,7 +28,7 @@ func _process(_delta):
     update_mouse_position()
 
 func update_mouse_position():
-    if(app_manager.active_object):
+    if(app_manager.state.active_object):
         return
     var viewport_mouse_position = get_viewport().get_mouse_position()
     var space_state = camera.get_world_3d().direct_space_state

@@ -1,4 +1,4 @@
-extends Node3D
+extends MarginContainer
 
 var app_manager: AppManager
 var ground_plane
@@ -20,7 +20,7 @@ func set_mesh(value: MeshInstance3D):
 
 func update_mouse_position():
     var viewport_mouse_position = get_viewport().get_mouse_position()
-    var space_state = get_world_3d().direct_space_state
+    var space_state = camera.get_world_3d().direct_space_state
     mouse_position = UIHelpers.get_floor_position_from_mouse(ground_plane, space_state, viewport_mouse_position, camera)
 
 func _process(_delta):
