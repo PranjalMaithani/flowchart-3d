@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cb2r105nqmjnr"]
+[gd_scene load_steps=14 format=3 uid="uid://cb2r105nqmjnr"]
 
 [ext_resource type="Material" uid="uid://c57ycd54txcqv" path="res://Materials/floor_dark.tres" id="1_jwrac"]
 [ext_resource type="PackedScene" uid="uid://pwytv1htyylm" path="res://Components/ContainerBox/ContainerBox.tscn" id="1_nv32g"]
@@ -28,13 +28,6 @@ size = Vector2(100, 100)
 [sub_resource type="BoxShape3D" id="BoxShape3D_beqyu"]
 size = Vector3(100, 0.00944167, 100)
 
-[sub_resource type="Curve3D" id="Curve3D_b6mxa"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.67169, 1.13565, -0.999158, -2.42842, 0, 0, 2.42842, 0, 0, 3.23785, 0.385561, -3.70793, 0, 0, 0, 0, 0, 0, 7.36757, 0, -0.591974),
-"tilts": PackedFloat32Array(0, 0, 0)
-}
-point_count = 3
-
 [sub_resource type="BoxMesh" id="BoxMesh_n7etl"]
 size = Vector3(0.2, 0.2, 0.2)
 
@@ -44,7 +37,7 @@ size = Vector3(0.2, 0.2, 0.2)
 environment = SubResource("Environment_ldxxl")
 
 [node name="Floor" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.951726, 0, 0, 0, 0.601, 0, 0, 0, 0.601, 6.11342, 0, 0.836246)
+transform = Transform3D(0.951726, 0, 0, 0, 0.601, 0, 0, 0, 0.601, 5.17266, 0.0981226, 0.409219)
 mesh = SubResource("PlaneMesh_yinng")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Floor"]
@@ -73,10 +66,6 @@ transform = Transform3D(0.999256, -0.00848121, -0.0376174, 0.0369439, -0.0690301
 light_energy = 1.495
 spot_range = 15.0
 spot_angle = 32.3512
-
-[node name="Path3D" type="Path3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.778, 0, 0)
-curve = SubResource("Curve3D_b6mxa")
 
 [node name="Test box" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.706, 0.684, -1.92)

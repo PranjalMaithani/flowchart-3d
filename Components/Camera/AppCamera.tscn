@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://vu8lwtm68c6t"]
 
 [ext_resource type="Script" path="res://src/Camera/app_camera.gd" id="1_fqkkr"]
-[ext_resource type="Script" path="res://src/Camera/camera_pan.gd" id="2_7q3jt"]
+[ext_resource type="PackedScene" uid="uid://rrw21mx3brkr" path="res://Components/Camera/CameraPan.tscn" id="2_nwov4"]
 [ext_resource type="Script" path="res://src/Camera/camera_zoom.gd" id="3_bo3o4"]
 
 [node name="AppCamera" type="Camera3D"]
@@ -12,9 +12,8 @@ size = 23.4292
 near = 0.003
 script = ExtResource("1_fqkkr")
 
-[node name="CameraPan" type="Node" parent="."]
+[node name="CameraPan" parent="." instance=ExtResource("2_nwov4")]
 unique_name_in_owner = true
-script = ExtResource("2_7q3jt")
 
 [node name="CameraZoom" type="Node" parent="."]
 unique_name_in_owner = true

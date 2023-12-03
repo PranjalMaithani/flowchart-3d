@@ -3,7 +3,7 @@ const ContainerBox = preload('./container_box.gd')
 const PositionUpdater = preload('./position_updater.gd')
 const ConnectIn = preload('./connect_in.gd')
 const DrawCurve = preload('../curves/draw_curve.gd')
-const DragStartPoint = preload('../ui/DragPoints/drag_start_point.gd')
+const DragStartPoint = preload('../ui/drag/drag_start_point.gd')
 const SnapArea = preload('../ui/snap_area.gd')
 
 @onready var drag_start_point: DragStartPoint = %DragStartPoint
@@ -28,7 +28,7 @@ func update_position(_caller: Area3D):
     check_snap_curve()
 
 func look_for_connections():
-    snap_area.position = to_local(Vector3(drag_start_point.mouse_position.x, position.y, drag_start_point.mouse_position. z))
+    snap_area.position = to_local(Vector3(drag_start_point.drag.mouse_position.x, position.y, drag_start_point.drag.mouse_position. z))
     check_snap_curve()
 
 func _ready():
@@ -42,8 +42,8 @@ func _ready():
                                 })
 
 func _process(_delta):
-    if(drag_start_point.is_dragging):
-        draw_curve.set_endpoint(drag_start_point.mouse_position)
+    if(drag_start_point.drag.is_dragging):
+        draw_curve.set_endpoint(drag_start_point.drag.mouse_position)
         look_for_connections()
 
 func on_start_dragging():

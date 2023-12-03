@@ -1,7 +1,7 @@
 extends Area3D
 
 const ContainerBox = preload('./container_box.gd')
-const DragAndDrop = preload('../ui/drag_and_drop.gd')
+const DragAndDrop = preload('../ui/drag/drag_and_drop.gd')
 @onready var container_mesh: MeshInstance3D = $"../%ContainerMesh"
 @onready var drag_and_drop: DragAndDrop = %DragAndDrop
 var parent_container: ContainerBox
@@ -29,8 +29,8 @@ func on_stop_dragging():
     initial_position = container.position
 
 func _process(_delta):
-    if(drag_and_drop.is_dragging):
-        var mouse_position_difference = drag_and_drop.mouse_position_difference
+    if(drag_and_drop.drag.is_dragging):
+        var mouse_position_difference = drag_and_drop.drag.mouse_position_difference
         container.position.x = initial_position.x + mouse_position_difference.x
         container.position.z = initial_position.z + mouse_position_difference.z
         parent_container.on_container_changed.emit(self)

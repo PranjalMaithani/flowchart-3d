@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://umio61skacvx"]
 
 [ext_resource type="Script" path="res://src/container/connect_out.gd" id="1_oumux"]
-[ext_resource type="Script" path="res://src/ui/DragPoints/drag_start_point.gd" id="2_bp7tp"]
+[ext_resource type="PackedScene" uid="uid://l54v2wayqffr" path="res://Components/UI/DragStartPoint.tscn" id="2_n1e6x"]
 [ext_resource type="PackedScene" uid="uid://dwe7vhsa8rw75" path="res://Components/Curves/DrawCurve.tscn" id="3_usfah"]
 [ext_resource type="Script" path="res://src/ui/snap_area.gd" id="4_kms6t"]
 
@@ -33,9 +33,8 @@ unique_name_in_owner = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("BoxShape3D_pdbnb")
 
-[node name="DragStartPoint" type="Node" parent="."]
+[node name="DragStartPoint" parent="." instance=ExtResource("2_n1e6x")]
 unique_name_in_owner = true
-script = ExtResource("2_bp7tp")
 
 [node name="DrawCurve" parent="." instance=ExtResource("3_usfah")]
 unique_name_in_owner = true

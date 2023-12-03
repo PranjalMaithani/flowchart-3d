@@ -2,7 +2,7 @@ extends Area3D
 
 const ContainerBox = preload('./container_box.gd')
 const PositionUpdater = preload('./position_updater.gd')
-const DragAndDrop = preload('../ui/drag_and_drop.gd')
+const DragAndDrop = preload('../ui/drag/drag_and_drop.gd')
 
 @export var cursor_shape: Input.CursorShape
 @onready var drag_and_drop: DragAndDrop = %DragAndDrop
@@ -45,7 +45,7 @@ func set_intial_values():
     parent_initial_position = parent_container.position
 
 func handle_drag():
-    var mouse_position_difference = drag_and_drop.mouse_position_difference
+    var mouse_position_difference = drag_and_drop.drag.mouse_position_difference
     var new_position = initial_position + mouse_position_difference
     position = Vector3(new_position.x, position.y, new_position.z)
     
@@ -65,5 +65,5 @@ func handle_drag():
     # parent_container.on_container_changed.emit()
 
 func _process(_delta):
-    if(drag_and_drop.is_dragging):
+    if(drag_and_drop.drag.is_dragging):
         handle_drag()

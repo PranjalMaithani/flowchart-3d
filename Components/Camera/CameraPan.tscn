@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://rrw21mx3brkr"]
+
+[ext_resource type="Script" path="res://src/Camera/camera_pan.gd" id="1_1lrws"]
+[ext_resource type="Script" path="res://src/ui/drag/drag.gd" id="2_vyoqd"]
+
+[node name="CameraPan" type="Node"]
+script = ExtResource("1_1lrws")
+
+[node name="Drag" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_vyoqd")
