@@ -8,19 +8,19 @@ const DragAndDrop = preload('../ui/drag/drag_and_drop.gd')
 @onready var drag_and_drop: DragAndDrop = %DragAndDrop
 @onready var container_mesh: MeshInstance3D = $"../%ContainerMesh"
 @onready var position_updater: PositionUpdater = $"../%PositionUpdater"
+
+var app_manager: AppManager
 var parent_container: ContainerBox
 var initial_position: Vector3
 var parent_initial_position: Vector3
 var initial_scale: Vector3
-var x_scale_unit
-var z_scale_unit
 var camera
 var ground_plane
 
 @export var x: int
 @export var z: int
 
-func update_position(caller: Area3D):
+func update_position(caller):
     if(caller == self):
         return
     position = position_updater.update_position(self)
@@ -31,7 +31,7 @@ func _ready():
     z = 1 if position.z > 0 else -1
     drag_and_drop.initialize({"area": self, "cursor_shape": cursor_shape, "on_stop_dragging": set_intial_values})
     #TODO: remove dependency from flowchart_scene node
-    var app_manager = get_node("/root/flowchart_scene/AppManager") as AppManager
+    app_manager = get_node("/root/flowchart_scene/AppManager") as AppManager
     camera = app_manager.camera
     ground_plane = app_manager.ground_plane
     parent_container = get_parent_node_3d()
@@ -65,5 +65,6 @@ func handle_drag():
     # parent_container.on_container_changed.emit()
 
 func _process(_delta):
-    if(drag_and_drop.drag.is_dragging):
-        handle_drag()
+    if(!drag_and_drop.drag.is_dragging || app_manager.state.active_tool != Constants.TOOL.SELECT):
+        return
+    handle_drag()

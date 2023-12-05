@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://l6y43mlw57o4"]
+
+[ext_resource type="Script" path="res://src/ui/drag/drag_draw.gd" id="1_v1jdx"]
+[ext_resource type="Script" path="res://src/ui/drag/drag.gd" id="2_20j5p"]
+
+[node name="DragDraw" type="Node"]
+script = ExtResource("1_v1jdx")
+
+[node name="Drag" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_20j5p")

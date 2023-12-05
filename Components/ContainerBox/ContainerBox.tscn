@@ -1,7 +1,8 @@
 [gd_scene load_steps=12 format=3 uid="uid://pwytv1htyylm"]
 
 [ext_resource type="Script" path="res://src/container/container_box.gd" id="1_h6xbw"]
-[ext_resource type="Material" uid="uid://b4k4y5oskkgcg" path="res://Materials/container_default.tres" id="2_2ooh6"]
+[ext_resource type="PackedScene" uid="uid://ch6tvlqe2bafs" path="res://Models/CubeMesh.tscn" id="2_kv3jc"]
+[ext_resource type="Material" uid="uid://b4k4y5oskkgcg" path="res://Materials/container_default.tres" id="3_6w1vt"]
 [ext_resource type="ArrayMesh" uid="uid://c4g2r8grndjii" path="res://Models/cap.obj" id="3_7uyt8"]
 [ext_resource type="PackedScene" uid="uid://bjhn2vl882fmd" path="res://Components/ContainerBox/ContainerGrabber.tscn" id="4_pqu1q"]
 [ext_resource type="PackedScene" uid="uid://cryyf8m3gnfrs" path="res://Components/ContainerBox/ContainerResizer.tscn" id="5_7jdvj"]
@@ -10,21 +11,16 @@
 [ext_resource type="PackedScene" uid="uid://b47tyrqs0w3kr" path="res://Components/ContainerBox/PlugIn.tscn" id="8_xnbbf"]
 [ext_resource type="Script" path="res://src/container/position_updater.gd" id="9_b53gi"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_v2erc"]
-lightmap_size_hint = Vector2i(6, 10)
-size = Vector3(3, 1, 2)
-
 [sub_resource type="ViewportTexture" id="ViewportTexture_2g8lv"]
 viewport_path = NodePath("SubViewport")
 
 [node name="ContainerBox" type="Node3D"]
 script = ExtResource("1_h6xbw")
 
-[node name="ContainerMesh" type="MeshInstance3D" parent="."]
+[node name="ContainerMesh" parent="." instance=ExtResource("2_kv3jc")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.487, -0.0221472)
-material_override = ExtResource("2_2ooh6")
-mesh = SubResource("BoxMesh_v2erc")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.485456, 0)
+material_override = ExtResource("3_6w1vt")
 
 [node name="TestMesh" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true
@@ -34,22 +30,23 @@ mesh = ExtResource("3_7uyt8")
 [node name="Grabber" parent="." instance=ExtResource("4_pqu1q")]
 
 [node name="DownRightResize" parent="." instance=ExtResource("5_7jdvj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.876247, 0.00568049, 0.901897)
 x = 0
 z = 0
 
 [node name="DownLeftResize" parent="." instance=ExtResource("5_7jdvj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.37698, 0.00568049, 0.901897)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.881953, 0.00568049, 0.901897)
 cursor_shape = 11
 x = 0
 z = 0
 
 [node name="UpLeftResize" parent="." instance=ExtResource("5_7jdvj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.37698, 0.00568049, -0.940596)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.881953, 0.00568049, -0.940596)
 x = 0
 z = 0
 
 [node name="UpRightResize" parent="." instance=ExtResource("5_7jdvj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.39711, 0.00568049, -0.940596)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.895207, 0.00568049, -0.940596)
 cursor_shape = 11
 x = 0
 z = 0
@@ -59,10 +56,10 @@ transform = Transform3D(1.97316, 0, 0, 0, -8.59711e-08, 1, 0, -1.96679, -4.37114
 texture = SubResource("ViewportTexture_2g8lv")
 
 [node name="PlugOut" parent="." instance=ExtResource("7_ccnpv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.64959, 0.685506, -0.498506)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.14769, 0.685506, -0.498506)
 
 [node name="PlugIn" parent="." instance=ExtResource("8_xnbbf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.73953, 0.68431, 0.60319)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2445, 0.68431, 0.60319)
 
 [node name="PositionUpdater" type="Node3D" parent="."]
 unique_name_in_owner = true

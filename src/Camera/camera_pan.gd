@@ -20,6 +20,6 @@ func _process(_delta):
     drag.update_mouse_position()
 
 func _input(event):
-    if(app_manager.state.active_object):
+    if(app_manager.state.active_object || app_manager.state.active_tool != Constants.TOOL.SELECT):
         return
     drag.handle_drag_input(event)

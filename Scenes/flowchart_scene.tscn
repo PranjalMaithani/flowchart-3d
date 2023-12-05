@@ -33,33 +33,39 @@ size = Vector3(0.2, 0.2, 0.2)
 
 [node name="flowchart_scene" type="Node3D"]
 
+[node name="FlowchartContainer" type="Node" parent="."]
+
+[node name="ContainerBox" parent="FlowchartContainer" instance=ExtResource("1_nv32g")]
+
+[node name="ContainerBox2" parent="FlowchartContainer" instance=ExtResource("1_nv32g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.44509, 0, -2.52348)
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ldxxl")
 
 [node name="Floor" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.951726, 0, 0, 0, 0.601, 0, 0, 0, 0.601, 5.17266, 0.0981226, 0.409219)
 mesh = SubResource("PlaneMesh_yinng")
+metadata/_edit_lock_ = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Floor"]
 collision_layer = 2
 collision_mask = 3
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00306225, 0)
 shape = SubResource("BoxShape3D_beqyu")
+metadata/_edit_lock_ = true
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.614835, 0.46181, -0.639304, 0.181361, 0.706107, 0.684486, 0.767519, -0.536791, 0.350385, -3.11844, 4.31145, 3.83666)
 light_energy = 1.254
 
-[node name="ContainerBox" parent="." instance=ExtResource("1_nv32g")]
-
-[node name="ContainerBox2" parent="." instance=ExtResource("1_nv32g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.44509, 0, -2.52348)
-
-[node name="AppManager" parent="." node_paths=PackedStringArray("ground_plane", "camera") instance=ExtResource("2_6gx0o")]
+[node name="AppManager" parent="." node_paths=PackedStringArray("ground_plane", "camera", "flowchart_container") instance=ExtResource("2_6gx0o")]
 ground_plane = NodePath("../Floor")
 camera = NodePath("../AppCamera")
+flowchart_container = NodePath("../FlowchartContainer")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(0.999256, -0.00848121, -0.0376174, 0.0369439, -0.0690301, 0.99693, -0.0110519, -0.997579, -0.0686654, 0.982482, 9.09849, -0.131702)
@@ -72,7 +78,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.706, 0.684, -1.92)
 mesh = SubResource("BoxMesh_n7etl")
 
 [node name="AppCamera" parent="." instance=ExtResource("2_m4467")]
-transform = Transform3D(0.972881, 0.174686, -0.151617, 0, 0.655479, 0.755213, 0.231306, -0.734733, 0.637703, 0, 10.3716, 8.52658)
+transform = Transform3D(0.972881, 0.174685, -0.151616, 0, 0.655479, 0.755214, 0.231306, -0.734733, 0.637703, 0, 10.3716, 8.52658)
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3

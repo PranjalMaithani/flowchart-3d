@@ -4,9 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://cpt5wqlmh812j" path="res://Components/UI/DragAndDrop.tscn" id="2_s0qc8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0xfu6"]
-size = Vector3(2.41903, 0.969367, 1.52867)
+size = Vector3(1.6, 0.969, 1.529)
 
 [sub_resource type="BoxMesh" id="BoxMesh_0npq6"]
+size = Vector3(0.65, 1, 1)
 
 [node name="GrabPoint" type="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00637102, 0.00248063, -0.000931025)
@@ -14,7 +15,7 @@ input_capture_on_drag = true
 script = ExtResource("1_p437s")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1.00033, 0, 0, 0, 1.00033, 0, 0, 0, 1.00033, -0.00336669, 0.488947, -0.00419688)
+transform = Transform3D(0.974507, 0, 0, 0, 0.974507, 0, 0, 0, 0.974507, -0.00336669, 0.488947, -0.00419688)
 shape = SubResource("BoxShape3D_0xfu6")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

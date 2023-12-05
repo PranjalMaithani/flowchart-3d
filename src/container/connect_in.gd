@@ -9,7 +9,7 @@ const ConnectOut = preload('./connect_out.gd')
 var parent_container: ContainerBox
 var connected_node: ConnectOut
 
-func update_position(_caller: Area3D):
+func update_position(_caller):
     position = position_updater.update_position(self)
     update_connected_node()
 

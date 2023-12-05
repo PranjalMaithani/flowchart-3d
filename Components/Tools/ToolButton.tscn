@@ -1,12 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://dx1oqd64dc0mt"]
+[gd_scene load_steps=3 format=3 uid="uid://dx1oqd64dc0mt"]
 
 [ext_resource type="Texture2D" uid="uid://qqlrh8s3r43q" path="res://Images/Icons/cube.png" id="1_5elq2"]
+[ext_resource type="Script" path="res://src/toolbar/tool_button.gd" id="1_w6syt"]
 
 [node name="ToolButton" type="Button"]
 custom_minimum_size = Vector2(63, 70)
 offset_right = 70.0
 offset_bottom = 70.0
 mouse_default_cursor_shape = 2
+script = ExtResource("1_w6syt")
 
 [node name="Icon" type="TextureRect" parent="."]
 layout_mode = 1

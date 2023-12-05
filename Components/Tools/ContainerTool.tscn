@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://cwdi2sajlnasl"]
+[gd_scene load_steps=5 format=3 uid="uid://cwdi2sajlnasl"]
 
 [ext_resource type="PackedScene" uid="uid://dx1oqd64dc0mt" path="res://Components/Tools/ToolButton.tscn" id="1_gh62l"]
+[ext_resource type="Script" path="res://src/Tools/container_tool.gd" id="1_pxv8s"]
+[ext_resource type="BoxMesh" uid="uid://cklidj7rhcxl5" path="res://Models/CubeMesh.tres" id="2_kjr8x"]
+[ext_resource type="PackedScene" uid="uid://l6y43mlw57o4" path="res://Components/UI/DragDraw.tscn" id="3_r0sjm"]
 
 [node name="ContainerTool" type="MarginContainer"]
 anchors_preset = -1
@@ -9,8 +12,18 @@ anchor_bottom = 0.108025
 offset_bottom = -0.000198364
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_pxv8s")
+initial_mesh = ExtResource("2_kjr8x")
 
 [node name="ToolButton" parent="." instance=ExtResource("1_gh62l")]
+unique_name_in_owner = true
 layout_mode = 2
+tool_name = 1
+
+[node name="DragDraw" parent="." instance=ExtResource("3_r0sjm")]
+unique_name_in_owner = true
+
+[node name="ToolMesh" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
 
 [editable path="ToolButton"]

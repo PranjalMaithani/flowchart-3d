@@ -10,7 +10,9 @@ anchor_bottom = 0.108025
 metadata/_edit_use_anchors_ = true
 
 [node name="ToolButton" parent="." instance=ExtResource("1_eor60")]
+unique_name_in_owner = true
 layout_mode = 2
+tool_name = 2
 
 [node name="Icon" parent="ToolButton" index="0"]
 texture = ExtResource("2_exdfb")

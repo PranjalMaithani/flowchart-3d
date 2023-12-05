@@ -23,7 +23,7 @@ func check_snap_curve():
         draw_curve.set_endpoint(Vector3(snap_position.x, position.y, snap_position.z))
         snap_area.snapped_object.set_connection(self)
 
-func update_position(_caller: Area3D):
+func update_position(_caller):
     position = position_updater.update_position(self)
     check_snap_curve()
 
@@ -42,9 +42,10 @@ func _ready():
                                 })
 
 func _process(_delta):
-    if(drag_start_point.drag.is_dragging):
-        draw_curve.set_endpoint(drag_start_point.drag.mouse_position)
-        look_for_connections()
+    if(!drag_start_point.drag.is_dragging || app_manager.state.active_tool != Constants.TOOL.SELECT):
+        return
+    draw_curve.set_endpoint(drag_start_point.drag.mouse_position)
+    look_for_connections()
 
 func on_start_dragging():
     draw_curve.enable_curve()

@@ -24,10 +24,6 @@ func _ready():
     camera = app_manager.camera
     ground_plane = app_manager.ground_plane
 
-# func _process(_delta):
-#     if(is_dragging):
-#         update_mouse_position()
-
 func update_mouse_position():
     var viewport_mouse_position = get_viewport().get_mouse_position()
     var space_state = camera.get_world_3d().direct_space_state
