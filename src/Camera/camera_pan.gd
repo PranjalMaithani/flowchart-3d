@@ -8,7 +8,9 @@ var app_manager: AppManager
 func initialize(properties):
     if(properties.has("on_stop_dragging")):
         on_stop_dragging = properties.on_stop_dragging
-    drag.initialize({"on_stop_dragging": on_stop_dragging})
+    drag.initialize({"on_stop_dragging": on_stop_dragging, \
+                     "bind": "mouse3", \
+                     "button_index": MOUSE_BUTTON_MIDDLE})
 
 func _ready():
     #TODO: remove dependency from flowchart_scene node
@@ -20,6 +22,6 @@ func _process(_delta):
     drag.update_mouse_position()
 
 func _input(event):
-    if(app_manager.state.active_object || app_manager.state.active_tool != Constants.TOOL.SELECT):
+    if(app_manager.state.active_object):
         return
     drag.handle_drag_input(event)
