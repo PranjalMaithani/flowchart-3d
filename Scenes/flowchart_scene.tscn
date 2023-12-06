@@ -1,12 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://cb2r105nqmjnr"]
+[gd_scene load_steps=12 format=3 uid="uid://cb2r105nqmjnr"]
 
 [ext_resource type="Material" uid="uid://c57ycd54txcqv" path="res://Materials/floor_dark.tres" id="1_jwrac"]
 [ext_resource type="PackedScene" uid="uid://pwytv1htyylm" path="res://Components/ContainerBox/ContainerBox.tscn" id="1_nv32g"]
 [ext_resource type="PackedScene" uid="uid://b338qhshxv8rp" path="res://Components/GameManager.tscn" id="2_6gx0o"]
 [ext_resource type="PackedScene" uid="uid://vu8lwtm68c6t" path="res://Components/Camera/AppCamera.tscn" id="2_m4467"]
-[ext_resource type="PackedScene" uid="uid://cwdi2sajlnasl" path="res://Components/Tools/ContainerTool.tscn" id="5_j4oy4"]
-[ext_resource type="PackedScene" uid="uid://8gugo5myjv76" path="res://Components/Tools/CursorTool.tscn" id="5_xtub2"]
-[ext_resource type="PackedScene" uid="uid://bs77k25nidf2y" path="res://Components/Tools/TextTool.tscn" id="7_sgprb"]
+[ext_resource type="PackedScene" uid="uid://d351kt1s5h16o" path="res://Components/HUD/HUD.tscn" id="5_q4b8n"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_p60a6"]
 sky_top_color = Color(0.411765, 0.482353, 0.584314, 1)
@@ -80,26 +78,5 @@ mesh = SubResource("BoxMesh_n7etl")
 [node name="AppCamera" parent="." instance=ExtResource("2_m4467")]
 transform = Transform3D(0.972881, 0.174685, -0.151616, 0, 0.655479, 0.755214, 0.231306, -0.734733, 0.637703, 0, 10.3716, 8.52658)
 
-[node name="UI" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="VFlowContainer" type="VBoxContainer" parent="UI"]
-layout_mode = 2
-offset_right = 65.0
-offset_bottom = 335.0
-
-[node name="CursorTool" parent="UI/VFlowContainer" instance=ExtResource("5_xtub2")]
-layout_mode = 2
-
-[node name="ContainerTool" parent="UI/VFlowContainer" instance=ExtResource("5_j4oy4")]
-layout_mode = 2
-size_flags_vertical = 0
-
-[node name="TextTool" parent="UI/VFlowContainer" instance=ExtResource("7_sgprb")]
-layout_mode = 2
+[node name="HUD" parent="." instance=ExtResource("5_q4b8n")]
+unique_name_in_owner = true

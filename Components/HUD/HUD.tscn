@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://d351kt1s5h16o"]
+
+[ext_resource type="PackedScene" uid="uid://8gugo5myjv76" path="res://Components/Tools/SelectTool.tscn" id="1_4qq2h"]
+[ext_resource type="PackedScene" uid="uid://cwdi2sajlnasl" path="res://Components/Tools/ContainerTool.tscn" id="2_2u3m3"]
+[ext_resource type="PackedScene" uid="uid://bs77k25nidf2y" path="res://Components/Tools/TextTool.tscn" id="3_rcbq1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pl1mx"]
+bg_color = Color(0.462745, 0.12549, 0, 0.192157)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.823529, 0.27451, 0, 0.501961)
+
+[node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ToolsFlex" type="VBoxContainer" parent="."]
+layout_mode = 2
+offset_right = 65.0
+offset_bottom = 335.0
+
+[node name="SelectTool" parent="ToolsFlex" instance=ExtResource("1_4qq2h")]
+layout_mode = 2
+
+[node name="ContainerTool" parent="ToolsFlex" instance=ExtResource("2_2u3m3")]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="TextTool" parent="ToolsFlex" instance=ExtResource("3_rcbq1")]
+layout_mode = 2
+
+[node name="SelectionBox" type="Panel" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+offset_right = 50.0
+offset_bottom = 50.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_pl1mx")

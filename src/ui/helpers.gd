@@ -17,6 +17,9 @@ static func get_floor_position_from_mouse(ground_plane: Node3D, space_state: Phy
     
     return null
 
+static func V2toV3(value: Vector2) -> Vector3:
+    return Vector3(value.x, 0, value.y)
+
 static func get_is_click_outside(event: InputEventMouseButton, mouse_world_space: Vector3, area: Area3D):
     if (event is InputEventMouseButton) and event.pressed:
       var event_local = area.to_local(mouse_world_space)

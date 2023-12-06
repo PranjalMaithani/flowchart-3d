@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://8gugo5myjv76"]
+
+[ext_resource type="Script" path="res://src/tools/select_tool.gd" id="1_81rf4"]
+[ext_resource type="PackedScene" uid="uid://dx1oqd64dc0mt" path="res://Components/Tools/ToolButton.tscn" id="1_y03cj"]
+[ext_resource type="Texture2D" uid="uid://c3j22xmr1wenl" path="res://Images/Icons/cursor icon.png" id="2_4bkhw"]
+[ext_resource type="Script" path="res://src/ui/drag/drag.gd" id="4_vruls"]
+
+[node name="SelectTool" type="MarginContainer"]
+anchors_preset = -1
+anchor_right = 0.0546875
+anchor_bottom = 0.108025
+script = ExtResource("1_81rf4")
+metadata/_edit_use_anchors_ = true
+
+[node name="ToolButton" parent="." instance=ExtResource("1_y03cj")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Icon" parent="ToolButton" index="0"]
+texture = ExtResource("2_4bkhw")
+
+[node name="Drag" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("4_vruls")
+
+[editable path="ToolButton"]

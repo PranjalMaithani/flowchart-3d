@@ -15,11 +15,15 @@ var mouse_position_difference: Vector3 = Vector3.ZERO
 var bind: String
 var button_index
 
+var is_2D: bool = false
+
 func initialize(properties: Dictionary):
     if(properties.has("on_stop_dragging")):
         on_stop_dragging = properties.on_stop_dragging
     if(properties.has("on_start_dragging")):
         on_start_dragging = properties.on_start_dragging
+    if(properties.has("is_2D")):
+        is_2D = properties.is_2D
     bind = properties.bind if properties.has("bind") else "mouse1"
     button_index = properties.button_index if properties.has("bind") else MOUSE_BUTTON_LEFT
 
@@ -32,7 +36,8 @@ func _ready():
 func update_mouse_position():
     var viewport_mouse_position = get_viewport().get_mouse_position()
     var space_state = camera.get_world_3d().direct_space_state
-    mouse_position = UIHelpers.get_floor_position_from_mouse(ground_plane, space_state, viewport_mouse_position, camera)
+    mouse_position = UIHelpers.V2toV3(viewport_mouse_position) if is_2D else \
+                     UIHelpers.get_floor_position_from_mouse(ground_plane, space_state, viewport_mouse_position, camera)
 
     if(!was_dragging && is_dragging):
         initial_mouse_position = mouse_position
