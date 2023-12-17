@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://ch6tvlqe2bafs"]
+
+[ext_resource type="BoxMesh" uid="uid://cklidj7rhcxl5" path="res://Models/CubeMesh.tres" id="1_emiuc"]
+[ext_resource type="Script" path="res://src/container/container_mesh.gd" id="2_hvrrx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oc60y"]
+size = Vector3(2.00024, 1, 1.99963)
+
+[node name="ContainerMesh" type="MeshInstance3D"]
+mesh = ExtResource("1_emiuc")
+script = ExtResource("2_hvrrx")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+input_ray_pickable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000366211, 0, 0.000793457)
+shape = SubResource("BoxShape3D_oc60y")

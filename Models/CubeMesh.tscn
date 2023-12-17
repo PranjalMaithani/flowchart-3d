@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://ch6tvlqe2bafs"]
-
-[ext_resource type="BoxMesh" uid="uid://cklidj7rhcxl5" path="res://Models/CubeMesh.tres" id="1_3idqf"]
-
-[node name="CubeMesh" type="MeshInstance3D"]
-mesh = ExtResource("1_3idqf")

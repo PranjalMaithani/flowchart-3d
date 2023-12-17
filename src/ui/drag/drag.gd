@@ -9,8 +9,11 @@ var on_stop_dragging: Callable
 var on_start_dragging: Callable
 
 var initial_mouse_position: Vector3 = Vector3.ZERO
+var initial_mouse_position_2d: Vector2 = Vector2.ZERO
 var mouse_position: Vector3 = Vector3.ZERO
+var mouse_position_2d: Vector2 = Vector2.ZERO
 var mouse_position_difference: Vector3 = Vector3.ZERO
+var mouse_position_difference_2d: Vector2 = Vector2.ZERO
 
 var bind: String
 var button_index
@@ -34,14 +37,17 @@ func _ready():
     ground_plane = app_manager.ground_plane
 
 func update_mouse_position():
-    var viewport_mouse_position = get_viewport().get_mouse_position()
+    mouse_position_2d = get_viewport().get_mouse_position()
     var space_state = camera.get_world_3d().direct_space_state
-    mouse_position = UIHelpers.V2toV3(viewport_mouse_position) if is_2D else \
-                     UIHelpers.get_floor_position_from_mouse(ground_plane, space_state, viewport_mouse_position, camera)
+    mouse_position = UIHelpers.V2toV3(mouse_position_2d) if is_2D else \
+                     UIHelpers.get_floor_position_from_mouse(ground_plane, space_state, mouse_position_2d, camera)
 
     if(!was_dragging && is_dragging):
+        initial_mouse_position_2d = mouse_position_2d
         initial_mouse_position = mouse_position
     
+    mouse_position_difference_2d = Vector2.ZERO if initial_mouse_position_2d == null \
+                                   else mouse_position_2d - initial_mouse_position_2d
     mouse_position_difference = Vector3.ZERO if initial_mouse_position == null \
                                 else mouse_position - initial_mouse_position
 

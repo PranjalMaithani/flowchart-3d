@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://pwytv1htyylm"]
+[gd_scene load_steps=14 format=3 uid="uid://pwytv1htyylm"]
 
 [ext_resource type="Script" path="res://src/container/container_box.gd" id="1_h6xbw"]
-[ext_resource type="PackedScene" uid="uid://ch6tvlqe2bafs" path="res://Models/CubeMesh.tscn" id="2_kv3jc"]
+[ext_resource type="PackedScene" uid="uid://ch6tvlqe2bafs" path="res://Models/ContainerMesh.tscn" id="2_aap4a"]
 [ext_resource type="Material" uid="uid://b4k4y5oskkgcg" path="res://Materials/container_default.tres" id="3_6w1vt"]
 [ext_resource type="ArrayMesh" uid="uid://c4g2r8grndjii" path="res://Models/cap.obj" id="3_7uyt8"]
+[ext_resource type="Material" uid="uid://icrs4n2b6bph" path="res://Materials/outline.tres" id="4_c8lcq"]
 [ext_resource type="PackedScene" uid="uid://bjhn2vl882fmd" path="res://Components/ContainerBox/ContainerGrabber.tscn" id="4_pqu1q"]
 [ext_resource type="PackedScene" uid="uid://cryyf8m3gnfrs" path="res://Components/ContainerBox/ContainerResizer.tscn" id="5_7jdvj"]
 [ext_resource type="PackedScene" uid="uid://dn37yfsub6u2l" path="res://Components/ContainerBox/TextContainer.tscn" id="6_kbu4l"]
@@ -11,16 +12,27 @@
 [ext_resource type="PackedScene" uid="uid://b47tyrqs0w3kr" path="res://Components/ContainerBox/PlugIn.tscn" id="8_xnbbf"]
 [ext_resource type="Script" path="res://src/container/position_updater.gd" id="9_b53gi"]
 
+[sub_resource type="BoxMesh" id="BoxMesh_fto55"]
+lightmap_size_hint = Vector2i(-174, 10)
+flip_faces = true
+size = Vector3(2, 1, 2)
+
 [sub_resource type="ViewportTexture" id="ViewportTexture_2g8lv"]
 viewport_path = NodePath("SubViewport")
 
 [node name="ContainerBox" type="Node3D"]
 script = ExtResource("1_h6xbw")
 
-[node name="ContainerMesh" parent="." instance=ExtResource("2_kv3jc")]
+[node name="ContainerMesh" parent="." instance=ExtResource("2_aap4a")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.485456, 0)
 material_override = ExtResource("3_6w1vt")
+
+[node name="OutlineMesh" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1.07, 0, 0, 0, 1.07, 0, 0, 0, 1.07, 0.0113137, 0.48734, -0.0272388)
+material_override = ExtResource("4_c8lcq")
+mesh = SubResource("BoxMesh_fto55")
 
 [node name="TestMesh" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true

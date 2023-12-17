@@ -1,5 +1,5 @@
 [gd_resource type="BoxMesh" format=3 uid="uid://cklidj7rhcxl5"]
 
 [resource]
-lightmap_size_hint = Vector2i(6, 10)
+lightmap_size_hint = Vector2i(-174, 10)
 size = Vector3(2, 1, 2)
