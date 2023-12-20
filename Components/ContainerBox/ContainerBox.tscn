@@ -39,29 +39,31 @@ unique_name_in_owner = true
 transform = Transform3D(0.028, 0, 0, 0, 0.028, 0, 0, 0, 0.028, 0.0026232, 0.654074, 0.0013071)
 mesh = ExtResource("3_7uyt8")
 
-[node name="Grabber" parent="." instance=ExtResource("4_pqu1q")]
+[node name="GrabPoint" parent="." instance=ExtResource("4_pqu1q")]
+unique_name_in_owner = true
 
 [node name="DownRightResize" parent="." instance=ExtResource("5_7jdvj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.876247, 0.00568049, 0.901897)
-x = 0
-z = 0
+z = -1
+
+[node name="ResizeNode" parent="." instance=ExtResource("5_7jdvj")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0166914, 0.00568049, -0.0458404)
+z = -1
 
 [node name="DownLeftResize" parent="." instance=ExtResource("5_7jdvj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.881953, 0.00568049, 0.901897)
 cursor_shape = 11
-x = 0
-z = 0
+x = -1
+z = -1
 
 [node name="UpLeftResize" parent="." instance=ExtResource("5_7jdvj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.881953, 0.00568049, -0.940596)
-x = 0
-z = 0
+x = -1
 
 [node name="UpRightResize" parent="." instance=ExtResource("5_7jdvj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.895207, 0.00568049, -0.940596)
 cursor_shape = 11
-x = 0
-z = 0
 
 [node name="TextContainer" parent="." instance=ExtResource("6_kbu4l")]
 transform = Transform3D(1.97316, 0, 0, 0, -8.59711e-08, 1, 0, -1.96679, -4.37114e-08, 0, 1.55138, 0)

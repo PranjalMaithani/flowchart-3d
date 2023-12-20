@@ -1,4 +1,5 @@
 extends Node3D
+const GrabPoint = preload('./grab_point.gd')
 
 signal on_container_changed(caller)
 @onready var container_mesh = %ContainerMesh
@@ -6,7 +7,17 @@ signal on_container_changed(caller)
 @onready var mesh_scale = container_mesh.scale
 var app_state: AppState
 
+@onready var grab_point = %GrabPoint
+@onready var resize_point = %ResizeNode #TODO:refactor resize point to a resize logic node and resize points
+
 var outline_scale_difference: float
+
+var SELECTION_FUNCTIONS = {
+    Constants.SELECTION_FUNCTIONS.GRAB: execute_grab,
+    Constants.SELECTION_FUNCTIONS.GRAB_STOP: execute_grab_stop,
+    Constants.SELECTION_FUNCTIONS.RESIZE: execute_resize,
+    Constants.SELECTION_FUNCTIONS.RESIZE_STOP: execute_resize_stop,
+}
 
 func _ready():
     #TODO: remove dependency from flowchart_scene node
@@ -35,3 +46,15 @@ func deselect():
 func set_outline_scale(_caller):
     var difference = Vector3(outline_scale_difference, outline_scale_difference, outline_scale_difference)
     outline_mesh.scale = container_mesh.scale + difference
+
+func execute_grab(properties: Dictionary):
+    grab_point.handle_drag(properties)
+
+func execute_grab_stop():
+    grab_point.execute_on_stop_dragging()
+
+func execute_resize(properties: Dictionary):
+    resize_point.handle_drag_new(properties)
+
+func execute_resize_stop():
+    resize_point.execute_on_stop_dragging()

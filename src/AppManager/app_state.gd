@@ -23,3 +23,17 @@ func select_objects(objects: Array[Node3D]):
 func deslect_all_objects():
     on_deselect_objects.emit()
     selected_objects = []
+
+func execute_selection(class_type, method: StringName, properties):
+    if(selected_objects.size() < 1):
+        return
+    for object in selected_objects:
+        if(is_instance_of(object, class_type) && "SELECTION_FUNCTIONS" in object && object.SELECTION_FUNCTIONS.has(method)):
+            var object_method: Callable = object.SELECTION_FUNCTIONS[method]
+            if(properties == null):
+                object_method.call()
+            else: 
+                object_method.call(properties)
+
+func check_object_in_selection(object):
+    return selected_objects.has(object)
