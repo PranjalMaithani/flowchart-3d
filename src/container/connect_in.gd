@@ -17,9 +17,15 @@ func _ready():
     parent_container = get_parent_node_3d()
     position_updater.initialize_position(self)
     parent_container.on_container_changed.connect(update_position)
+    parent_container.on_container_deleted.connect(remove_connection)
 
 func set_connection(value: ConnectOut):
     connected_node = value
+
+func remove_connection():
+    if(connected_node == null):
+        return
+    connected_node.remove_connection()
 
 func update_connected_node():
     if(connected_node == null):

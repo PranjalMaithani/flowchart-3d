@@ -2,6 +2,8 @@ extends Node3D
 const GrabPoint = preload('./grab_point.gd')
 
 signal on_container_changed(caller)
+signal on_container_deleted
+
 @onready var container_mesh = %ContainerMesh
 @onready var outline_mesh: MeshInstance3D = %OutlineMesh
 @onready var mesh_scale = container_mesh.scale
@@ -17,6 +19,7 @@ var SELECTION_FUNCTIONS = {
     Constants.SELECTION_FUNCTIONS.GRAB_STOP: execute_grab_stop,
     Constants.SELECTION_FUNCTIONS.RESIZE: execute_resize,
     Constants.SELECTION_FUNCTIONS.RESIZE_STOP: execute_resize_stop,
+    Constants.SELECTION_FUNCTIONS.DELETE: execute_delete,
 }
 
 func _ready():
@@ -58,3 +61,6 @@ func execute_resize(properties: Dictionary):
 
 func execute_resize_stop():
     resize_point.execute_on_stop_dragging()
+
+func execute_delete():
+    on_container_deleted.emit()

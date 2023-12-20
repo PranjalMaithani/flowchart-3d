@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://b338qhshxv8rp"]
+
+[ext_resource type="Script" path="res://src/AppManager/app_manager.gd" id="1_cecuk"]
+[ext_resource type="Script" path="res://src/AppManager/hotkeys.gd" id="2_tfkyb"]
+
+[node name="AppManager" type="Node"]
+script = ExtResource("1_cecuk")
+
+[node name="Node" type="Node" parent="."]
+script = ExtResource("2_tfkyb")

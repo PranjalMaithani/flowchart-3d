@@ -15,10 +15,8 @@ const SnapArea = preload('../ui/snap_area.gd')
 @onready var app_manager: AppManager = get_node("/root/flowchart_scene/AppManager") as AppManager
 var parent_container: ContainerBox
 
-var connected_plug: ConnectIn
-
 func check_snap_curve():
-    if(snap_area.snapped_object):
+    if(snap_area.snapped_object != null):
         var snap_position = snap_area.snapped_object.global_position
         draw_curve.set_endpoint(Vector3(snap_position.x, position.y, snap_position.z))
         snap_area.snapped_object.set_connection(self)
@@ -57,3 +55,8 @@ func on_stop_dragging():
     if(snap_area.snapped_object != null):
         snap_area.lock()  
     snap_area.position = Vector3.ZERO
+
+func remove_connection():
+    snap_area.snapped_object = null
+    snap_area.unlock()
+    draw_curve.disable_curve()

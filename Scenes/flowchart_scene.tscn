@@ -2,7 +2,7 @@
 
 [ext_resource type="Material" uid="uid://c57ycd54txcqv" path="res://Materials/floor_dark.tres" id="1_jwrac"]
 [ext_resource type="PackedScene" uid="uid://pwytv1htyylm" path="res://Components/ContainerBox/ContainerBox.tscn" id="1_nv32g"]
-[ext_resource type="PackedScene" uid="uid://b338qhshxv8rp" path="res://Components/GameManager.tscn" id="2_6gx0o"]
+[ext_resource type="PackedScene" uid="uid://b338qhshxv8rp" path="res://Components/AppManager.tscn" id="2_6gx0o"]
 [ext_resource type="PackedScene" uid="uid://vu8lwtm68c6t" path="res://Components/Camera/AppCamera.tscn" id="2_m4467"]
 [ext_resource type="PackedScene" uid="uid://d351kt1s5h16o" path="res://Components/HUD/HUD.tscn" id="5_q4b8n"]
 

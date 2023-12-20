@@ -18,6 +18,7 @@ func unlock():
 func lock():
     is_locked = true
 
+# locking incase some other object of type snap class passes over this area. In that case snap area shouldn't connect to this passing over snap class
 func exit_area(body: Node3D):
     if(is_locked):
         return
